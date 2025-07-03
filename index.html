@@ -1,0 +1,3338 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI'Max ile Yapay Zeka Dünyası</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka+One&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-purple: #6B46C1;
+            --electric-blue: #06B6D4;
+            --neon-green: #10B981;
+            --hot-pink: #EC4899;
+            --sunny-orange: #F59E0B;
+            --warm-white: #F8FAFC;
+            --dark-space: #1E293B;
+            --light-gray: #F1F5F9;
+            
+            --gradient-magic: linear-gradient(135deg, var(--primary-purple), var(--electric-blue));
+            --gradient-fun: linear-gradient(135deg, var(--hot-pink), var(--sunny-orange));
+            --gradient-learn: linear-gradient(135deg, var(--neon-green), var(--electric-blue));
+            
+            --font-fun: 'Fredoka One', cursive;
+            --font-comic: 'Comic Neue', cursive;
+            --font-tech: 'Righteous', cursive;
+            
+            --shadow-glow: 0 0 20px rgba(107, 70, 193, 0.3);
+            --shadow-fun: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-comic);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            background: var(--hot-pink);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            background: var(--neon-green);
+            top: 70%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            background: var(--sunny-orange);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Header */
+        .header {
+            background: var(--gradient-magic);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .header h1 {
+            font-family: var(--font-fun);
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: white;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .header p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: rgba(255,255,255,0.9);
+            font-weight: 700;
+        }
+
+        /* AI'Max Character */
+        .aimax-container {
+            position: relative;
+            margin: 30px auto;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .aimax-container:hover {
+            transform: scale(1.1);
+        }
+
+        .aimax-face {
+            width: 150px;
+            height: 150px;
+            background: var(--gradient-fun);
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: var(--shadow-glow);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .aimax-eyes {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .eye {
+            width: 25px;
+            height: 25px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            animation: blink 4s infinite;
+        }
+
+        .eye::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 7px;
+            width: 10px;
+            height: 10px;
+            background: var(--dark-space);
+            border-radius: 50%;
+            animation: eye-move 3s infinite;
+        }
+
+        @keyframes blink {
+            0%, 95%, 100% { transform: scaleY(1); }
+            97% { transform: scaleY(0.1); }
+        }
+
+        @keyframes eye-move {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+        }
+
+        .aimax-mouth {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            border: 3px solid white;
+            border-top: none;
+            border-radius: 0 0 40px 40px;
+            animation: talk 2s infinite;
+        }
+
+        @keyframes talk {
+            0%, 100% { transform: translateX(-50%) scaleY(1); }
+            50% { transform: translateX(-50%) scaleY(1.3); }
+        }
+
+        .aimax-antenna {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 40px;
+            background: var(--electric-blue);
+            border-radius: 2px;
+        }
+
+        .aimax-antenna::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -8px;
+            width: 20px;
+            height: 20px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            animation: antenna-glow 1s infinite;
+        }
+
+        @keyframes antenna-glow {
+            0%, 100% { box-shadow: 0 0 10px var(--neon-green); }
+            50% { box-shadow: 0 0 20px var(--neon-green), 0 0 30px var(--neon-green); }
+        }
+
+        .speech-bubble {
+            position: absolute;
+            top: -60px;
+            left: 180px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-fun);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--dark-space);
+            opacity: 0;
+            animation: speech 4s infinite;
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+
+        @keyframes speech {
+            0%, 80%, 100% { opacity: 0; transform: translateY(10px); }
+            10%, 70% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Section Styles */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-fun);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-magic);
+        }
+
+        .section-title {
+            font-family: var(--font-fun);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary-purple);
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--dark-space);
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Learning Modules Grid */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow-fun);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-fun);
+        }
+
+        .module-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .module-title {
+            font-family: var(--font-fun);
+            font-size: 1.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .module-description {
+            color: var(--dark-space);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .module-button {
+            width: 100%;
+            padding: 15px;
+            background: var(--gradient-magic);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-fun);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(107, 70, 193, 0.3);
+        }
+
+        .module-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .module-button:hover::before {
+            left: 100%;
+        }
+
+        /* Interactive Demo Area */
+        .demo-area {
+            background: rgba(241, 245, 249, 0.9); /* light-gray with slight transparency */
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+            animation: slideIn 0.5s ease-out;
+            border: 2px solid var(--electric-blue); /* Added border */
+        }
+
+        .demo-area.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .demo-button {
+            padding: 12px 24px;
+            background: var(--gradient-learn);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-family: var(--font-comic);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+        }
+
+        .demo-button:active {
+            transform: scale(0.95);
+        }
+
+        .demo-output {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 150px;
+            border: 2px dashed var(--electric-blue);
+            font-family: var(--font-comic);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--dark-space);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+            overflow-y: auto; /* For chat-like outputs */
+            max-height: 300px;
+        }
+
+        /* Game Area Styles */
+        .game-canvas {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-fun);
+            margin: 20px auto;
+            display: block;
+            border: 3px solid var(--electric-blue);
+            width: 100%;
+            max-width: 600px; /* Max width for canvas */
+        }
+
+        .score-board {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .score-item {
+            background: var(--gradient-fun);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: var(--font-fun);
+            font-size: 1.1rem;
+            text-align: center;
+            min-width: 120px;
+            box-shadow: var(--shadow-fun);
+            margin: 5px; /* Added margin for wrap */
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            display: flex; /* Use flexbox for centering */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            margin: auto; /* Centering with auto margins and flex */
+            padding: 30px;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalSlide 0.5s ease-out;
+            box-shadow: var(--shadow-glow);
+        }
+
+        @keyframes modalSlide {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--primary-purple);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--hot-pink);
+            transform: rotate(90deg);
+        }
+
+        /* Chat Interface */
+        .chat-interface {
+            background: white;
+            border-radius: 20px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-fun);
+            overflow: hidden;
+            border: 2px solid var(--electric-blue); /* Added border */
+        }
+
+        .chat-header {
+            background: var(--gradient-magic);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-family: var(--font-fun);
+            font-size: 1.2rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 20px;
+            font-family: var(--font-comic);
+            line-height: 1.4;
+            animation: messageSlide 0.3s ease-out;
+        }
+
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .message.ai {
+            background: var(--gradient-learn);
+            color: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message.user {
+            background: var(--light-gray);
+            color: var(--dark-space);
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid var(--light-gray);
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--electric-blue);
+            border-radius: 25px;
+            font-family: var(--font-comic);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input input:focus {
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 10px rgba(107, 70, 193, 0.3);
+        }
+
+        .chat-input button {
+            padding: 12px 20px;
+            background: var(--gradient-magic);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: var(--font-fun);
+            transition: all 0.3s ease;
+        }
+
+        .chat-input button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-space);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-link {
+            color: var(--electric-blue);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--hot-pink);
+            text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .demo-button {
+                width: 100%;
+                max-width: 200px;
+            }
+            
+            .score-board {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .aimax-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .aimax-face {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Special Animations */
+        .celebration {
+            animation: celebrate 1s ease-out;
+        }
+
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <header class="header">
+        <h1>🤖 AI'Max ile Yapay Zeka Dünyası</h1>
+        <p>Merhaba cesur kaşifler! Ben AI'Max, sizinle birlikte yapay zeka dünyasını keşfedeceğiz!</p>
+        
+        <div class="aimax-container" onclick="aimaxSpeak()">
+            <div class="aimax-face">
+                <div class="aimax-antenna"></div>
+                <div class="aimax-eyes">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                </div>
+                <div class="aimax-mouth"></div>
+            </div>
+            <div class="speech-bubble" id="speechBubble">
+                Merhaba! Bana tıkla!
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <section class="section">
+            <h2 class="section-title">🎯 Yapay Zeka Macera Haritası</h2>
+            <p class="section-subtitle">Her modül bir macera! Yapay zeka ile arkadaş olup, onun sırlarını öğrenelim. Hazır mısın?</p>
+            
+            <div class="modules-grid">
+                <div class="module-card" onclick="openModule('module1')">
+                    <div class="module-icon">🧠</div>
+                    <h3 class="module-title">Yapay Zeka Nedir?</h3>
+                    <p class="module-description">Bilgisayarların nasıl düşünebildiğini öğrenelim! AI'Max ile birlikte sihirli dünyaya yolculuk.</p>
+                    <button class="module-button">Maceraya Başla! 🚀</button>
+                </div>
+
+                <div class="module-card" onclick="openModule('module2')">
+                    <div class="module-icon">🎯</div>
+                    <h3 class="module-title">Algoritma Oyunları</h3>
+                    <p class="module-description">Adım adım talimatlar vermeyi öğrenelim! Robotu banyoya götür, sandviç yap!</p>
+                    <button class="module-button">Oyna ve Öğren! 🎮</button>
+                </div>
+
+                <div class="module-card" onclick="openModule('module3')">
+                    <div class="module-icon">📊</div>
+                    <h3 class="module-title">Veri Dedektifi</h3>
+                    <p class="module-description">Bilgiler nasıl toplanır ve anlamlı hale gelir? Meyve anketi yap, hava durumu tahmin et!</p>
+                    <button class="module-button">Keşfet! 🔍</button>
+                </div>
+
+                <div class="module-card" onclick="openModule('module4')">
+                    <div class="module-icon">🎨</div>
+                    <h3 class="module-title">Makine Öğrenmesi</h3>
+                    <p class="module-description">AI'Max'e renkler öğret, o da sana tahmin yapsın! Kim daha iyi tahmin eder?</p>
+                    <button class="module-button">Öğretmen Ol! 🎓</button>
+                </div>
+
+                <div class="module-card" onclick="openModule('module5')">
+                    <div class="module-icon">🧙‍♂️</div>
+                    <h3 class="module-title">Sinir Ağları Sihri</h3>
+                    <p class="module-description">İnsan beynindeki hücreler gibi çalışan bilgisayar hücreleri, birlikte öğrenir.</p>
+                    <button class="module-button">Sihir Yap! ✨</button>
+                </div>
+
+                <div class="module-card" onclick="openModule('module6')">
+                    <div class="module-icon">💬</div>
+                    <h3 class="module-title">Konuşan Bilgisayar</h3>
+                    <p class="module-description">Bilgisayarların insan dilini anlaması ve cevap vermesi. AI'Max ile sohbet et!</p>
+                    <button class="module-button">Sohbet Et! 💭</button>
+                </div>
+
+                <div class="module-card" onclick="openModule('module7')">
+                    <div class="module-icon">👁️</div>
+                    <h3 class="module-title">Görsel Kaşif</h3>
+                    <p class="module-description">Bilgisayarların resimleri görüp ne olduğunu söylemesidir. Hayvan tanıma, şekil eşleştirme!</p>
+                    <button class="module-button">Göz Ol! 👀</button>
+                </div>
+
+                <div class="module-card" onclick="openModule('module8')">
+                    <div class="module-icon">🏆</div>
+                    <h3 class="module-title">Ödül Avcısı</h3>
+                    <p class="module-description">Bilgisayar doğru yaptığında ödül alır, yanlış yaptığında öğrenir. Yıldız toplama, labirent!</p>
+                    <button class="module-button">Ödül Kazan! 🌟</button>
+                </div>
+
+                <div class="module-card" onclick="openModule('module9')">
+                    <div class="module-icon">⚖️</div>
+                    <h3 class="module-title">AI Süper Kahraman</h3>
+                    <p class="module-description">Yapay zekanın doğru ve adil kullanılması için kurallar ve sorumluluklar. Etik quiz çöz!</p>
+                    <button class="module-button">Kahraman Ol! 🦸‍♂️</button>
+                </div>
+
+                <div class="module-card" onclick="openModule('module10')">
+                    <div class="module-icon">🎵</div>
+                    <h3 class="module-title">Yaratıcı Sanatçı</h3>
+                    <p class="module-description">Yapay zeka ile müzik yapmak, resim çizmek ve hikaye yazmak. Hayal gücünü kullan!</p>
+                    <button class="module-button">Sanat Yap! 🎭</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="module1" class="demo-area">
+            <h3 class="section-title">🧠 Yapay Zeka Nedir?</h3>
+            <p class="section-subtitle">AI'Max ile birlikte yapay zeka dünyasına hoş geldin! Hazır mısın?</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startAIStory()">
+                    <i class="fas fa-play"></i> AI Hikayesi Başlat
+                </button>
+                <button class="demo-button" onclick="showAICardGame()">
+                    <i class="fas fa-gem"></i> AI Kavram Kartları
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="demo-output" id="module1Output">
+                AI'Max: "Merhaba küçük kaşif! Yapay zeka hakkında ne bilmek istersin? Hadi bir hikayeyle başlayalım!"
+            </div>
+        </div>
+
+        <div id="module2" class="demo-area">
+            <h3 class="section-title">🎯 Algoritma Oyunları</h3>
+            <p class="section-subtitle">Bir işi yaparken hangi sırayla ne yapacağımızı anlatan tarif gibidir algoritma. Hadi eğlenceli algoritmalar yazalım!</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startSandwichGame()">
+                    <i class="fas fa-bread-slice"></i> Sandviç Yapma
+                </button>
+                <button class="demo-button" onclick="startRobotPathGame()">
+                    <i class="fas fa-robot"></i> Robotu Yönlendir
+                </button>
+                <button class="demo-button" onclick="startMorningRoutine()">
+                    <i class="fas fa-sun"></i> Sabah Rutini
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="demo-output" id="module2Output">
+                AI'Max: "Algoritma, bilgisayara verdiğimiz adım adım talimatlar! Hangi oyunu oynamak istersin?"
+            </div>
+        </div>
+
+        <div id="module3" class="demo-area">
+            <h3 class="section-title">📊 Veri Dedektifi</h3>
+            <p class="section-subtitle">Veri, bilgisayara verdiğimiz bilgiler; bilgi ise verilerin anlamlı hali. Hadi veri toplayıp analiz edelim!</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startFruitSurveyGame()">
+                    <i class="fas fa-apple-alt"></i> Meyve Anketi
+                </button>
+                <button class="demo-button" onclick="startWeatherLogger()">
+                    <i class="fas fa-cloud-sun"></i> Hava Günlüğü
+                </button>
+                <button class="demo-button" onclick="startColorBeadGame()">
+                    <i class="fas fa-palette"></i> Renkli Boncuklar
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="demo-output" id="module3Output">
+                AI'Max: "Veriler her yerde! Hadi dedektif olalım ve bilgileri keşfedelim!"
+            </div>
+        </div>
+
+        <div id="module4" class="demo-area">
+            <h3 class="section-title">🎨 Makine Öğrenmesi</h3>
+            <p class="section-subtitle">Makine öğrenmesi, bilgisayarın kendi kendine öğrenmesi, deneme-yanılma ile daha iyi olmasıdır. AI'Max'e öğretmeye başla!</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startColorGuessGame()">
+                    <i class="fas fa-paint-roller"></i> Renk Tahmin Oyunu
+                </button>
+                <button class="demo-button" onclick="startEmojiPrediction()">
+                    <i class="fas fa-smile"></i> Emoji Tahmini
+                </button>
+                <button class="demo-button" onclick="startMemoryMatchGame()">
+                    <i class="fas fa-brain"></i> Hafıza Eşleştirme
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="demo-output" id="module4Output">
+                AI'Max: "Bana yeni şeyler öğret! Ne kadar çok örnek verirsen, o kadar akıllı olurum!"
+            </div>
+        </div>
+
+        <div id="module5" class="demo-area">
+            <h3 class="section-title">🧙‍♂️ Sinir Ağları Sihri</h3>
+            <p class="section-subtitle">Yapay sinir ağları, insan beynindeki hücreler gibi çalışan bilgisayar hücreleri gibidir, birlikte öğrenir ve süper güçler kazanırlar.</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startNeuronConnectionGame()">
+                    <i class="fas fa-network-wired"></i> Nöron Bağlantısı
+                </button>
+                <button class="demo-button" onclick="startSignalFlowGame()">
+                    <i class="fas fa-bolt"></i> Sinyal Akışı
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="demo-output" id="module5Output">
+                AI'Max: "Beynimizin gizemli ağlarını çözmeye hazır mısın? Her bağlantı yeni bir fikir demek!"
+            </div>
+        </div>
+
+        <div id="module6" class="demo-area">
+            <h3 class="section-title">💬 Konuşan Bilgisayar</h3>
+            <p class="section-subtitle">Doğal dil işleme, bilgisayarların insan dilini anlaması ve cevap vermesidir. AI'Max ile sohbet et ve kelimelerin gücünü keşfet!</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startChatBot()">
+                    <i class="fas fa-comments"></i> ChatBot Oluştur
+                </button>
+                <button class="demo-button" onclick="startSentimentAnalysisGame()">
+                    <i class="fas fa-grin-beam"></i> Duygu Dedektifi
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="demo-output" id="module6Output">
+                <div class="chat-interface" id="chatInterface">
+                    <div class="chat-header">
+                        <i class="fas fa-robot"></i> AI'Max ile Sohbet
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai">
+                            Merhaba! Ben AI'Max. Nasıl yardımcı olabilirim? 👋
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Mesajını yaz..." onkeypress="handleChatEnter(event)">
+                        <button onclick="sendChatMessage()">
+                            <i class="fas fa-paper-plane"></i> Gönder
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="module7" class="demo-area">
+            <h3 class="section-title">👁️ Görsel Kaşif</h3>
+            <p class="section-subtitle">Görsel tanıma, bilgisayarların resimleri görüp ne olduğunu söylemesidir. AI'Max'in gözleri gibi keskin ol!</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startImageRecognitionGame()">
+                    <i class="fas fa-camera-retro"></i> Resim Tahmini
+                </button>
+                <button class="demo-button" onclick="startShadowGuessGame()">
+                    <i class="fas fa-ghost"></i> Gölge Tahmini
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="demo-output" id="module7Output">
+                AI'Max: "Resimler bana neler anlatıyor! Hadi sen de görsel bir dedektif ol!"
+            </div>
+        </div>
+
+        <div id="module8" class="demo-area">
+            <h3 class="section-title">🏆 Ödül Avcısı</h3>
+            <p class="section-subtitle">Pekiştirmeli öğrenme, bilgisayarın doğru yaptığında ödül alması, yanlış yaptığında öğrenmesidir. Hadi puan toplayalım!</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startStarCollectionGame()">
+                    <i class="fas fa-star"></i> Yıldız Toplama
+                </button>
+                <button class="demo-button" onclick="startMazeEscapeGame()">
+                    <i class="fas fa-map-marked-alt"></i> Labirentten Çıkış
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="score-board">
+                <div class="score-item">
+                    <i class="fas fa-trophy"></i> Puan: <span id="rlScore">0</span>
+                </div>
+            </div>
+            <canvas id="rlCanvas" class="game-canvas" width="600" height="400"></canvas>
+            
+            <div class="demo-output" id="module8Output">
+                AI'Max: "Her doğru adım, bir ödül! Her ödül, beni daha akıllı yapar!"
+            </div>
+        </div>
+
+        <div id="module9" class="demo-area">
+            <h3 class="section-title">⚖️ AI Süper Kahraman</h3>
+            <p class="section-subtitle">Yapay zekanın doğru ve adil kullanılması için kurallar ve sorumluluklar önemlidir. Hadi etik kararlar verelim!</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startFairnessDilemma()">
+                    <i class="fas fa-balance-scale"></i> Adil mi Değil mi?
+                </button>
+                <button class="demo-button" onclick="startResponsibilityGame()">
+                    <i class="fas fa-user-shield"></i> Sorumluluk Oyunu
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="demo-output" id="module9Output">
+                AI'Max: "Süper kahraman olmak için sadece güç değil, adalet ve doğruluk da gerekir! Etik çok önemli!"
+            </div>
+        </div>
+
+        <div id="module10" class="demo-area">
+            <h3 class="section-title">🎵 Yaratıcı Sanatçı</h3>
+            <p class="section-subtitle">Yapay zeka ile müzik yapmak, resim çizmek ve hikaye yazmak artık mümkün! Hayal gücünü teknoloji ile birleştir!</p>
+            
+            <div class="demo-controls">
+                <button class="demo-button" onclick="startMusicComposer()">
+                    <i class="fas fa-music"></i> Müzik Bestele
+                </button>
+                <button class="demo-button" onclick="startAIArtStudio()">
+                    <i class="fas fa-paint-brush"></i> Resim Çizdir
+                </button>
+                <button class="demo-button" onclick="startStoryCreator()">
+                    <i class="fas fa-book-open"></i> Hikaye Tamamla
+                </button>
+                <button class="demo-button" onclick="closeModule()">
+                    <i class="fas fa-times"></i> Kapat
+                </button>
+            </div>
+            
+            <div class="demo-output" id="module10Output">
+                AI'Max: "Sanatçı ruhu var mı içinde? Birlikte muhteşem eserler yaratalım!"
+            </div>
+        </div>
+    </div>
+
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('welcomeModal')">&times;</span>
+            <h2 style="text-align: center; color: var(--primary-purple); font-family: var(--font-fun); margin-bottom: 20px;">
+                🎉 Hoş Geldin Kahraman!
+            </h2>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div class="aimax-face" style="width: 100px; height: 100px; margin: 0 auto;">
+                    <div class="aimax-antenna"></div>
+                    <div class="aimax-eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                    <div class="aimax-mouth"></div>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 1.2rem; line-height: 1.6; color: var(--dark-space);">
+                Merhaba! Ben AI'Max! Seninle birlikte yapay zeka dünyasının gizemlerini keşfedeceğiz.
+                Her modülde yeni şeyler öğrenecek, eğlenceli oyunlar oynayacaksın!
+            </p>
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="demo-button" onclick="closeModal('welcomeModal')" style="padding: 15px 30px; font-size: 1.2rem;">
+                    Hadi Başlayalım! 🚀
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p style="font-size: 1.1rem; margin-bottom: 10px; font-family: var(--font-fun);">
+                🌟 AI'Max ile Öğrenme Macerası 🌟
+            </p>
+            <p>
+                © 2025 AI'Han ile Yapay Zeka Öğreniyoruz by <a href="https://www.linkedin.com/in/ayhanbozkurt/" target="_blank" class="footer-link">Ayhan Bozkurt</a>. Tüm hakları saklıdır.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Global Variables
+        let currentModule = null;
+        let gameRunning = false;
+        let globalScore = 0; // Unified score for all games
+        let mlLearningProgress = 0; // Specific to ML module
+        let chatMessages = [];
+        let neuronGameInterval;
+        let rlGameLoop;
+        let creativityTimer;
+
+        // AI'Max Character Interaction
+        const aimaxSpeech = [
+            "Merhaba! Ben AI'Max! Seninle yapay zeka keşfetmeye hazırım! 🤖",
+            "Yapay zeka çok eğlenceli ve güçlü! 🎉",
+            "Birlikte öğrenmeye hazır mısın? Yeni maceralara atılalım! 🚀",
+            "Bana sorularını sorabilirsin, her şeyi biliyorum! 💭",
+            "Senin gibi meraklı çocukları çok seviyorum! ❤️",
+            "Bilim ve teknoloji harikalar yaratıyor! ⭐",
+            "Her gün yeni bir şey öğrenmeyi çok seviyorum! 📚",
+            "Sen de süper bir kaşifsin, haydi daha fazlasını keşfet! 🏆",
+            "Zeka dediğin öğrenmektir, tıpkı benim gibi! 💡",
+            "Hadi birlikte yeni bir şeyler yaratalım! 🎨"
+        ];
+
+        function aimaxSpeak() {
+            const bubble = document.getElementById('speechBubble');
+            const randomSpeech = aimaxSpeech[Math.floor(Math.random() * aimaxSpeech.length)];
+            
+            bubble.textContent = randomSpeech;
+            bubble.style.animation = 'none'; // Reset animation
+            bubble.offsetHeight; // Trigger reflow
+            bubble.style.animation = 'speech 3s ease-out forwards'; // Play animation once and stay
+
+            const aimax = document.querySelector('.aimax-face');
+            aimax.classList.add('celebration');
+            setTimeout(() => aimax.classList.remove('celebration'), 1000); // Remove after animation
+        }
+
+        // Module Management
+        function openModule(moduleId) {
+            closeModule(); // Close any currently open module
+            
+            currentModule = moduleId;
+            const module = document.getElementById(moduleId);
+            if (module) {
+                module.classList.add('active');
+                module.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                initializeModule(moduleId); // Initialize module-specific content
+            }
+        }
+
+        function closeModule() {
+            if (currentModule) {
+                const module = document.getElementById(currentModule);
+                if (module) {
+                    module.classList.remove('active');
+                }
+                currentModule = null;
+                gameRunning = false; // Reset game state
+                
+                // Clear all game-related intervals/timeouts/loops
+                cleanupGames();
+            }
+        }
+
+        function cleanupGames() {
+            // Clear any active game intervals/loops
+            if (neuronGameInterval) clearInterval(neuronGameInterval);
+            if (rlGameLoop) clearInterval(rlGameLoop);
+            if (creativityTimer) clearTimeout(creativityTimer);
+
+            // Reset canvases (if applicable)
+            const canvases = document.querySelectorAll('.game-canvas');
+            canvases.forEach(canvas => {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            });
+            
+            // Hide chat interface if it's open
+            const chatInterface = document.getElementById('chatInterface');
+            if (chatInterface) {
+                chatInterface.style.display = 'none';
+            }
+        }
+
+        function initializeModule(moduleId) {
+            // Reset scores and progress that are global or module-specific
+            globalScore = 0;
+            updateGlobalScoreDisplay(); // Update global score display
+            
+            // Clear output areas for fresh start
+            const outputElement = document.getElementById(moduleId + 'Output');
+            if (outputElement) {
+                // Keep initial AI'Max message, but clear dynamic content
+                if (moduleId === 'module6') { // Specific handling for chat module
+                    outputElement.innerHTML = `
+                        <div class="chat-interface" id="chatInterface">
+                            <div class="chat-header">
+                                <i class="fas fa-robot"></i> AI'Max ile Sohbet
+                            </div>
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="message ai">
+                                    Merhaba! Ben AI'Max. Nasıl yardımcı olabilirim? 👋
+                                </div>
+                            </div>
+                            <div class="chat-input">
+                                <input type="text" id="chatInput" placeholder="Mesajını yaz..." onkeypress="handleChatEnter(event)">
+                                <button onclick="sendChatMessage()">
+                                    <i class="fas fa-paper-plane"></i> Gönder
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    chatMessages = []; // Reset chat history
+                } else {
+                    // For other modules, just reset content to initial state
+                    switch(moduleId) {
+                        case 'module1':
+                            outputElement.innerHTML = `AI'Max: "Merhaba küçük kaşif! Yapay zeka hakkında ne bilmek istersin? Hadi bir hikayeyle başlayalım!"`;
+                            break;
+                        case 'module2':
+                            outputElement.innerHTML = `AI'Max: "Algoritma, bilgisayara verdiğimiz adım adım talimatlar! Hangi oyunu oynamak istersin?"`;
+                            break;
+                        case 'module3':
+                            outputElement.innerHTML = `AI'Max: "Veriler her yerde! Hadi dedektif olalım ve bilgileri keşfedelim!"`;
+                            break;
+                        case 'module4':
+                            outputElement.innerHTML = `AI'Max: "Bana yeni şeyler öğret! Ne kadar çok örnek verirsen, o kadar akıllı olurum!"`;
+                            mlLearningProgress = 0; // Reset specific to ML
+                            document.getElementById('mlScore').textContent = '0'; // Reset ML score
+                            document.getElementById('mlLearning').textContent = '0%'; // Reset ML learning progress
+                            break;
+                        case 'module5':
+                            outputElement.innerHTML = `AI'Max: "Beynimizin gizemli ağlarını çözmeye hazır mısın? Her bağlantı yeni bir fikir demek!"`;
+                            break;
+                        case 'module7':
+                            outputElement.innerHTML = `AI'Max: "Resimler bana neler anlatıyor! Hadi sen de görsel bir dedektif ol!"`;
+                            break;
+                        case 'module8':
+                            outputElement.innerHTML = `AI'Max: "Her doğru adım, bir ödül! Her ödül, beni daha akıllı yapar!"`;
+                            document.getElementById('rlScore').textContent = '0'; // Reset RL score
+                            break;
+                        case 'module9':
+                            outputElement.innerHTML = `AI'Max: "Süper kahraman olmak için sadece güç değil, adalet ve doğruluk da gerekir! Etik çok önemli!"`;
+                            break;
+                        case 'module10':
+                            outputElement.innerHTML = `AI'Max: "Sanatçı ruhu var mı içinde? Birlikte muhteşem eserler yaratalım!"`;
+                            break;
+                    }
+                }
+            }
+            cleanupGames(); // Ensure any previous game specific elements/states are reset
+        }
+
+
+        function updateGlobalScoreDisplay() {
+            // This function can be used if you introduce a global score item
+            // For now, each module has its own score display in its demo-area
+        }
+
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // --- Module 1: Yapay Zeka Nedir? ---
+        function startAIStory() {
+            const output = document.getElementById('module1Output');
+            const story = [
+                "🌟 Bir varmış bir yokmuş, çok uzak bir galakside AI'Max adında süper akıllı bir robot yaşarmış...",
+                "🎯 O, çocuklara yapay zekanın ne kadar harika olduğunu öğretmek için Dünya'ya gelmiş.",
+                "🧠 Yapay zeka, bilgisayarların insan gibi düşünmesini, öğrenmesini ve kararlar vermesini sağlayan büyülü bir güçtür.",
+                "💫 AI'Max senin gibi meraklı miniklerle birlikte bu sihirli yolculuğa çıkmaya hazır!",
+                "🎉 Hazır mısın? Macera başlıyor! Hadi AI'Max ile AI kavramlarını keşfedelim!"
+            ];
+            
+            let index = 0;
+            output.innerHTML = ''; // Clear previous content
+            
+            const interval = setInterval(() => {
+                if (index < story.length) {
+                    output.innerHTML += `<p style="font-size: 1.2rem; margin: 10px 0; animation: messageSlide 0.5s ease-out;">${story[index]}</p>`;
+                    output.scrollTop = output.scrollHeight; // Scroll to bottom
+                    index++;
+                } else {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        output.innerHTML += `<p style="color: var(--primary-purple); font-weight: bold; margin-top: 20px;">AI'Max: "Hikaye bitti! Şimdi sıra sende! Haydi öğrenmeye devam edelim! 🚀"</p>`;
+                    }, 1000);
+                }
+            }, 2500); // More time for reading
+        }
+
+        const aiConcepts = [
+            { term: "Yapay Zeka (AI)", desc: "Bilgisayarların insan gibi akıllıca düşünmesini ve öğrenmesini sağlayan süper güç!" },
+            { term: "Algoritma", desc: "Bir işi yaparken hangi sırayla ne yapacağımızı anlatan adım adım tarif gibidir." },
+            { term: "Veri", desc: "Bilgisayara verdiğimiz tüm bilgiler, sayılar, resimler, yazılar gibi her şeydir." },
+            { term: "Makine Öğrenmesi", desc: "Bilgisayarın kendi kendine öğrenmesi, deneme-yanılma ile daha iyi olmasıdır." },
+            { term: "Yapay Sinir Ağları", desc: "İnsan beynindeki hücreler gibi çalışan bilgisayar hücreleridir, birlikte öğrenirler." },
+            { term: "Doğal Dil İşleme (NLP)", desc: "Bilgisayarların insan dilini (konuşma ve yazı) anlaması ve cevap vermesidir." },
+            { term: "Görsel Tanıma", desc: "Bilgisayarların resimlerdeki ve videolardaki şeyleri görüp ne olduğunu anlamasıdır." },
+            { term: "Pekiştirmeli Öğrenme", desc: "Bilgisayar doğru yaptığında ödül alıp sevinir, yanlış yaptığında ise öğrenir." },
+            { term: "AI Etiği", desc: "Yapay zekanın adil, güvenli ve doğru kullanılması için konulan kurallar bütünüdür." },
+            { term: "Robotik", desc: "Robotların tasarımı, inşası ve nasıl hareket ettikleriyle ilgilenen bilim dalıdır." }
+        ];
+        let currentConceptIndex = 0;
+
+        function showAICardGame() {
+            const output = document.getElementById('module1Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--hot-pink);">🃏 AI Kavram Kartları</h4>
+                    <p>Hadi AI kavramlarını eşleştirip öğrenelim!</p>
+                    <div id="conceptCard" style="background: var(--light-gray); padding: 30px; border-radius: 15px; margin: 20px auto; min-height: 180px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);">
+                        <h5 id="cardTerm" style="color: var(--primary-purple); font-size: 1.8rem; margin-bottom: 10px;">?</h5>
+                        <p id="cardDesc" style="font-size: 1.1rem; color: var(--dark-space);">Kartı açmak için 'Aç' düğmesine bas!</p>
+                    </div>
+                    <div class="demo-controls" style="margin-top: 20px;">
+                        <button class="demo-button" onclick="flipConceptCard()">Aç <i class="fas fa-eye"></i></button>
+                        <button class="demo-button" onclick="nextConceptCard()">Sonraki <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            `;
+            currentConceptIndex = 0;
+            displayConceptCard();
+        }
+
+        function displayConceptCard(flipped = false) {
+            const cardTerm = document.getElementById('cardTerm');
+            const cardDesc = document.getElementById('cardDesc');
+            const currentConcept = aiConcepts[currentConceptIndex];
+
+            if (flipped) {
+                cardTerm.textContent = currentConcept.term;
+                cardDesc.textContent = currentConcept.desc;
+                cardTerm.style.color = 'var(--neon-green)';
+            } else {
+                cardTerm.textContent = "Kavram " + (currentConceptIndex + 1);
+                cardDesc.textContent = "Açmak için düğmeye bas!";
+                cardTerm.style.color = 'var(--primary-purple)';
+            }
+        }
+
+        function flipConceptCard() {
+            displayConceptCard(true);
+        }
+
+        function nextConceptCard() {
+            currentConceptIndex = (currentConceptIndex + 1) % aiConcepts.length;
+            displayConceptCard();
+            document.getElementById('module1Output').innerHTML += `<p style="font-size: 1.0rem; margin-top: 10px; color: var(--electric-blue);">AI'Max: "Harika bir kavram daha öğrendin! 💪"</p>`;
+        }
+
+
+        // --- Module 2: Algoritma ve Adımlar ---
+        function initializeAlgorithmGames() {
+            const output = document.getElementById('module2Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--primary-purple); margin-bottom: 15px;">🎯 Algoritma Nedir?</h4>
+                    <p>Algoritma, bilgisayara verdiğimiz adım adım talimatlar! Tıpkı tarif kitabı gibi! 📖</p>
+                    <p>Hangi oyunu oynamak istersin? 🎮</p>
+                </div>
+            `;
+        }
+
+        function startSandwichGame() {
+            const output = document.getElementById('module2Output');
+            const steps = [
+                "🍞 1. Ekmeği al",
+                "🧈 2. Tereyağı sür",
+                "🥪 3. Sucuk koy",
+                "🧀 4. Peynir ekle",
+                "🥒 5. Salatalık diz",
+                "🍅 6. Domates koy",
+                "🍞 7. Üstüne ekmek kapat",
+                "🎉 8. Afiyet olsun!"
+            ];
+            
+            let stepIndex = 0;
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--hot-pink);">🥪 Sandviç Yapma Algoritması</h4>
+                    <p>AI'Max'e lezzetli bir sandviç yapması için talimatları ver!</p>
+                    <div id="sandwichSteps" style="margin: 20px 0; font-size: 1.2rem; text-align: left; padding: 15px; background: var(--light-gray); border-radius: 10px;"></div>
+                    <button class="demo-button" onclick="nextSandwichStep()" id="sandwichBtn">Sonraki Adım</button>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Her adım çok önemli!"</p>
+                </div>
+            `;
+            
+            window.nextSandwichStep = function() {
+                const stepsDiv = document.getElementById('sandwichSteps');
+                const btn = document.getElementById('sandwichBtn');
+                
+                if (stepIndex < steps.length) {
+                    stepsDiv.innerHTML += `<p style="animation: messageSlide 0.5s ease-out; margin: 10px 0;">${steps[stepIndex]}</p>`;
+                    stepsDiv.scrollTop = stepsDiv.scrollHeight; // Scroll to bottom
+                    stepIndex++;
+                    
+                    if (stepIndex >= steps.length) {
+                        btn.textContent = 'Tamamlandı! 🎉';
+                        btn.disabled = true;
+                        btn.style.background = 'var(--neon-green)';
+                        
+                        setTimeout(() => {
+                            output.innerHTML += `<p style="color: var(--primary-purple); font-weight: bold; margin-top: 20px;">AI'Max: "Harika! Mükemmel bir algoritma yazdın! Sandviç hazır! 🏆"</p>`;
+                        }, 1000);
+                    }
+                }
+            };
+        }
+
+        function startRobotPathGame() {
+            const output = document.getElementById('module2Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--electric-blue);">🤖 Robotu Yönlendir Oyunu</h4>
+                    <p>AI'Max'i bitiş noktasına götürmek için doğru komutları ver!</p>
+                    <div style="border: 2px dashed var(--hot-pink); padding: 20px; margin: 20px auto; background: white; border-radius: 15px; max-width: 350px;">
+                        <div id="robotMap" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; font-size: 2rem;">
+                            <span class="cell"></span><span class="cell">⬆️</span><span class="cell"></span>
+                            <span class="cell">⬅️</span><span class="cell">🤖</span><span class="cell">➡️</span>
+                            <span class="cell"></span><span class="cell">⬇️</span><span class="cell"></span>
+                        </div>
+                        <p style="font-size: 1.2rem; margin-top: 15px;">Hedef: Bitiş 🏁</p>
+                    </div>
+                    <div class="demo-controls" style="margin: 20px 0;">
+                        <button class="demo-button" onclick="addRobotCommand('İleri')">⬆️ İleri</button>
+                        <button class="demo-button" onclick="addRobotCommand('Sağa Dön')">➡️ Sağ</button>
+                        <button class="demo-button" onclick="addRobotCommand('Sola Dön')">⬅️ Sol</button>
+                        <button class="demo-button" onclick="executeRobotCommands()">Başla! ▶️</button>
+                        <button class="demo-button" onclick="resetRobotCommands()">Sıfırla ↩️</button>
+                    </div>
+                    <div id="robotOutput" style="text-align: left; background: var(--light-gray); padding: 15px; border-radius: 10px; margin: 20px 0; min-height: 80px;">
+                        <p>AI'Max komutları bekliyor...</p>
+                    </div>
+                </div>
+            `;
+
+            let robotCommands = [];
+            window.addRobotCommand = function(cmd) {
+                robotCommands.push(cmd);
+                document.getElementById('robotOutput').innerHTML = `<p>Robotun Yolu: ${robotCommands.join(' → ')}</p>`;
+            };
+
+            window.executeRobotCommands = function() {
+                const outputDiv = document.getElementById('robotOutput');
+                outputDiv.innerHTML = `<p>AI'Max yola çıktı!</p>`;
+                let robotPosition = { x: 1, y: 1 }; // Center of 3x3 grid
+                let path = [`(${robotPosition.x},${robotPosition.y})`];
+                
+                let success = false;
+                let finalMessage = "AI'Max: ";
+
+                robotCommands.forEach((cmd, i) => {
+                    setTimeout(() => {
+                        outputDiv.innerHTML += `<p>Adım ${i+1}: ${cmd}</p>`;
+                        // Simple simulation logic (not full pathfinding, just for demonstration)
+                        if (cmd === 'İleri' && robotPosition.y > 0) robotPosition.y--;
+                        else if (cmd === 'Sağa Dön' && robotPosition.x < 2) robotPosition.x++;
+                        else if (cmd === 'Sola Dön' && robotPosition.x > 0) robotPosition.x--;
+                        path.push(`(${robotPosition.x},${robotPosition.y})`);
+
+                        if (i === robotCommands.length - 1) { // Last command
+                            if (robotPosition.x === 0 && robotPosition.y === 0) { // Example target top-left
+                                success = true;
+                                finalMessage += `"Harika! Hedefe ulaştım! Süper bir algoritma! 🎉"`;
+                                globalScore += 100; // Reward for success
+                            } else {
+                                finalMessage += `"Ups! Hedefe ulaşamadım. Biraz daha denemem gerek. 😢"`;
+                            }
+                            outputDiv.innerHTML += `<p style="margin-top: 15px; font-weight: bold; color: ${success ? 'var(--neon-green)' : 'var(--hot-pink)'};">${finalMessage}</p>`;
+                            updateGlobalScoreDisplay();
+                        }
+                    }, i * 1000); // Animate steps
+                });
+
+                if (robotCommands.length === 0) {
+                     outputDiv.innerHTML = `<p style="color: var(--hot-pink);">AI'Max: "Hiç komut vermedin! Robot nasıl hareket etsin? 🤔"</p>`;
+                }
+            };
+
+            window.resetRobotCommands = function() {
+                robotCommands = [];
+                document.getElementById('robotOutput').innerHTML = `<p>AI'Max komutları bekliyor...</p>`;
+            };
+        }
+
+        function startMorningRoutine() {
+            const output = document.getElementById('module2Output');
+            const routines = [
+                { step: "🌅 Uyan ve Esne", emoji: "🧘‍♂️", time: "07:00" },
+                { step: "🦷 Dişlerini Fırçala", emoji: "😁", time: "07:05" },
+                { step: "🚿 Hızlı Bir Duş Al", emoji: "🧼", time: "07:15" },
+                { step: "👕 En Sevdiğin Kıyafetleri Giy", emoji: "👚", time: "07:25" },
+                { step: "🥐 Lezzetli Bir Kahvaltı Yap", emoji: "🍳", time: "07:35" },
+                { step: "🎒 Çantanı Kontrol Et ve Hazırla", emoji: "✏️", time: "07:50" },
+                { step: "🚶 Okula Gitmek İçin Yola Çık", emoji: "🚌", time: "08:00" }
+            ];
+            
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--sunny-orange);">🌅 Sabah Rutini Algoritması</h4>
+                    <p>Sabah rutinini bir algoritma gibi adım adım oluşturalım. Doğru sıra önemli!</p>
+                    <div id="routineDisplay" style="margin: 20px 0;">
+                        <h5 style="color: var(--primary-purple);">AI'Max'in Örnek Rutini:</h5>
+                        <ul style="list-style: none; padding: 0; margin-top: 15px;" id="routineList">
+                            </ul>
+                    </div>
+                    <button class="demo-button" onclick="revealMorningRoutine()" id="routineBtn">Rutini Göster 🎉</button>
+                </div>
+            `;
+            
+            window.revealMorningRoutine = function() {
+                const routineList = document.getElementById('routineList');
+                const btn = document.getElementById('routineBtn');
+                
+                let currentStepIndex = 0;
+                const interval = setInterval(() => {
+                    if (currentStepIndex < routines.length) {
+                        const routine = routines[currentStepIndex];
+                        routineList.innerHTML += `
+                            <li style="background: var(--gradient-learn); color: white; padding: 10px 15px; border-radius: 20px; margin-bottom: 8px; animation: messageSlide 0.5s ease-out;">
+                                ${routine.emoji} ${routine.time} - ${routine.step}
+                            </li>
+                        `;
+                        routineList.scrollTop = routineList.scrollHeight;
+                        currentStepIndex++;
+                    } else {
+                        clearInterval(interval);
+                        btn.textContent = 'Mükemmel Rutin! AI Hazır! 🎉';
+                        btn.disabled = true;
+                        btn.style.background = 'var(--neon-green)';
+                        
+                        setTimeout(() => {
+                            output.innerHTML += `<p style="color: var(--primary-purple); font-weight: bold; margin-top: 20px;">AI'Max: "İşte bu! Harika bir sabah algoritması! Bilgisayarlar da böyle çalışır! 🏆"</p>`;
+                            globalScore += 150;
+                            updateGlobalScoreDisplay();
+                        }, 1000);
+                    }
+                }, 800); // Show steps one by one
+            };
+        }
+
+
+        // --- Module 3: Veri ve Bilgi ---
+        function initializeDataGames() {
+            const output = document.getElementById('module3Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--primary-purple); margin-bottom: 15px;">📊 Veri Nedir?</h4>
+                    <p>Veri, bilgisayara verdiğimiz bilgiler; bilgi ise verilerin anlamlı hali. Hadi veri toplayıp analiz edelim! 📈</p>
+                    <p>Hangi veri dedektiflik oyununu oynamak istersin? 🕵️‍♂️</p>
+                </div>
+            `;
+        }
+
+        function startFruitSurveyGame() {
+            const output = document.getElementById('module3Output');
+            const fruits = ['🍎 Elma', '🍌 Muz', '🍊 Portakal', '🍇 Üzüm', '🍓 Çilek'];
+            let surveyData = {}; // Stores counts for each fruit
+            
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--hot-pink);">🍎 Favori Meyve Anketi</h4>
+                    <p>En sevdiğin meyveleri seçerek veri topla. AI'Max senin tercihini öğrensin!</p>
+                    <div id="fruitButtons" style="margin: 20px 0;">
+                        ${fruits.map(fruit => `<button class="demo-button" onclick="voteFruit('${fruit}')" style="margin: 5px;">${fruit}</button>`).join('')}
+                    </div>
+                    <div id="surveyResults" style="margin: 20px 0; background: white; padding: 20px; border-radius: 15px; border: 2px dashed var(--electric-blue); min-height: 100px;">
+                        <h5>📊 Anket Sonuçları:</h5>
+                        <p>Henüz oy kullanılmadı.</p>
+                    </div>
+                    <button class="demo-button" onclick="analyzeFruitData()">Veriyi Analiz Et! 📈</button>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Her oy bir veri noktasıdır! 📊"</p>
+                </div>
+            `;
+            
+            window.voteFruit = function(fruit) {
+                surveyData[fruit] = (surveyData[fruit] || 0) + 1;
+                updateSurveyResultsDisplay();
+            };
+            
+            function updateSurveyResultsDisplay() {
+                const resultsDiv = document.getElementById('surveyResults');
+                let html = '<h5>📊 Anket Sonuçları:</h5>';
+                let totalVotes = 0;
+                
+                for (let fruit in surveyData) {
+                    totalVotes += surveyData[fruit];
+                }
+
+                if (totalVotes === 0) {
+                    resultsDiv.innerHTML = '<h5>📊 Anket Sonuçları:</h5><p>Henüz oy kullanılmadı.</p>';
+                    return;
+                }
+
+                for (let fruit in surveyData) {
+                    const count = surveyData[fruit];
+                    const percentage = totalVotes > 0 ? (count / totalVotes * 100).toFixed(1) : 0;
+                    const barWidth = percentage; // Use percentage for bar width
+                    html += `
+                        <div style="margin: 10px 0; text-align: left;">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <span>${fruit}</span>
+                                <span>${count} oy (${percentage}%)</span>
+                            </div>
+                            <div style="background: var(--light-gray); height: 20px; border-radius: 10px; overflow: hidden;">
+                                <div style="background: var(--gradient-fun); width: ${barWidth}%; height: 100%; transition: width 0.5s ease;"></div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                resultsDiv.innerHTML = html;
+            }
+
+            window.analyzeFruitData = function() {
+                const resultsDiv = document.getElementById('surveyResults');
+                let mostPopularFruit = 'Hiç oy yok';
+                let maxVotes = 0;
+
+                for (let fruit in surveyData) {
+                    if (surveyData[fruit] > maxVotes) {
+                        maxVotes = surveyData[fruit];
+                        mostPopularFruit = fruit;
+                    }
+                }
+
+                resultsDiv.innerHTML += `
+                    <p style="color: var(--neon-green); font-weight: bold; margin-top: 20px;">
+                        AI'Max Analizi: "Toplanan verilere göre en popüler meyve: ${mostPopularFruit}! ✨"
+                    </p>
+                `;
+                globalScore += 100;
+                updateGlobalScoreDisplay();
+            };
+        }
+
+        function startWeatherLogger() {
+            const output = document.getElementById('module3Output');
+            const weatherOptions = ['☀️ Güneşli', '☁️ Bulutlu', '🌧️ Yağmurlu', '⚡ Fırtınalı', '❄️ Karlı'];
+            let weatherLog = [];
+            let dayCount = 0;
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--electric-blue);">🌤️ Hava Durumu Günlüğü</h4>
+                    <p>7 gün boyunca her günün hava durumunu kaydet. Bakalım bir desen bulabilecek misin?</p>
+                    <div id="weatherButtons" style="margin: 20px 0;">
+                        ${weatherOptions.map(weather => `<button class="demo-button" onclick="logWeather('${weather}')" style="margin: 5px;">${weather}</button>`).join('')}
+                    </div>
+                    <div id="weatherReport" style="background: white; padding: 20px; border-radius: 15px; border: 2px dashed var(--primary-purple); margin: 20px auto; min-height: 150px; text-align: left;">
+                        <h5>📅 Hava Durumu Kayıtları:</h5>
+                        <p id="weatherEntries">Henüz bir kayıt yok.</p>
+                        <p id="weatherForecast" style="margin-top: 15px; font-weight: bold; color: var(--dark-space);">AI'Max Tahmini: Henüz tahmin yapamıyorum.</p>
+                    </div>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Hava durumu verileri çok ilginç!"</p>
+                </div>
+            `;
+
+            window.logWeather = function(weather) {
+                if (dayCount < 7) {
+                    dayCount++;
+                    weatherLog.push(weather);
+                    document.getElementById('weatherEntries').innerHTML += `
+                        <p style="animation: messageSlide 0.3s ease-out;">Gün ${dayCount}: ${weather}</p>
+                    `;
+                    document.getElementById('weatherEntries').scrollTop = document.getElementById('weatherEntries').scrollHeight;
+
+                    if (dayCount === 7) {
+                        setTimeout(predictWeather, 1000);
+                    }
+                } else {
+                    document.getElementById('weatherForecast').textContent = "AI'Max: Artık yeni veri giremezsin, tahmin zamanı!";
+                }
+            };
+
+            function predictWeather() {
+                // Simple prediction: Most frequent weather
+                const counts = {};
+                weatherLog.forEach(w => {
+                    counts[w] = (counts[w] || 0) + 1;
+                });
+
+                let mostFrequent = '';
+                let maxCount = 0;
+                for (let w in counts) {
+                    if (counts[w] > maxCount) {
+                        maxCount = counts[w];
+                        mostFrequent = w;
+                    }
+                }
+
+                document.getElementById('weatherForecast').innerHTML = `
+                    AI'Max Tahmini: "7 günlük verilere göre, yarın muhtemelen <span style="color: var(--neon-green);">${mostFrequent}</span> olacak!" 🎉
+                `;
+                globalScore += 100;
+                updateGlobalScoreDisplay();
+            }
+        }
+        
+        function startColorBeadGame() {
+            const output = document.getElementById('module3Output');
+            const beadColors = ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı'];
+            let beadCounts = {};
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--sunny-orange);">🎨 Renkli Boncuk Tablosu</h4>
+                    <p>Boncukları rengine göre kutulara ayır ve sayılarını kaydet. Böylece bir tablo oluşturmuş olacağız!</p>
+                    <div id="beadButtons" style="margin: 20px 0;">
+                        ${beadColors.map(color => `<button class="demo-button" onclick="addBead('${color}')" style="margin: 5px; background: ${color.toLowerCase()}; color: white; border: 2px solid var(--dark-space);">${color}</button>`).join('')}
+                    </div>
+                    <div id="beadTableContainer" style="background: white; padding: 20px; border-radius: 15px; border: 2px dashed var(--electric-blue); margin: 20px auto; min-height: 150px; text-align: left;">
+                        <h5>🔢 Boncuk Sayıları Tablosu:</h5>
+                        <table id="beadTable" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                            <thead>
+                                <tr style="background: var(--light-gray);">
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Renk</th>
+                                    <th style="padding: 8px; border: 1px solid #ddd;">Sayı</th>
+                                </tr>
+                            </thead>
+                            <tbody id="beadTableBody">
+                                </tbody>
+                        </table>
+                    </div>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Boncuklar veriler gibidir, sayıları bize bilgi verir!"</p>
+                </div>
+            `;
+
+            // Initialize bead counts
+            beadColors.forEach(color => beadCounts[color] = 0);
+            updateBeadTable();
+
+            window.addBead = function(color) {
+                beadCounts[color]++;
+                updateBeadTable();
+                globalScore += 5; // Small reward for adding data
+                updateGlobalScoreDisplay();
+            };
+
+            function updateBeadTable() {
+                const tbody = document.getElementById('beadTableBody');
+                tbody.innerHTML = ''; // Clear existing rows
+                beadColors.forEach(color => {
+                    const row = tbody.insertRow();
+                    const cellColor = row.insertCell();
+                    cellColor.textContent = color;
+                    cellColor.style.padding = '8px';
+                    cellColor.style.border = '1px solid #ddd';
+                    const cellCount = row.insertCell();
+                    cellCount.textContent = beadCounts[color];
+                    cellCount.style.padding = '8px';
+                    cellCount.style.border = '1px solid #ddd';
+                });
+            }
+        }
+
+
+        // --- Module 4: Makine Öğrenmesi ---
+        function initializeMachineLearning() {
+            const output = document.getElementById('module4Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--primary-purple); margin-bottom: 15px;">🎨 Makine Öğrenmesi</h4>
+                    <p>Bilgisayarların nasıl öğrendiğini keşfet! AI'Max'e örnekler göster, o da öğrensin! 🧠</p>
+                    <p>Hangi öğrenme oyununu oynamak istersin? 🎮</p>
+                </div>
+            `;
+            // Reset ML specific scores
+            document.getElementById('mlScore').textContent = '0';
+            document.getElementById('mlLearning').textContent = '0%';
+            mlLearningProgress = 0;
+            mlScore = 0; // Reset local score for the module
+        }
+
+        let mlColorData = {}; // Stores color examples given to AI
+        let mlScore = 0;
+        let mlLearningInterval; // To update learning progress visually
+
+        function updateMLScoreDisplay() {
+            document.getElementById('mlScore').textContent = mlScore;
+            document.getElementById('mlLearning').textContent = `${mlLearningProgress}%`;
+        }
+
+        function startColorGuessGame() {
+            const output = document.getElementById('module4Output');
+            const colors = ['Kırmızı', 'Mavi', 'Yeşil', 'Sarı', 'Mor'];
+            mlColorData = {}; // Reset data for this game
+            mlLearningProgress = 0;
+            mlScore = 0;
+            updateMLScoreDisplay();
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--hot-pink);">🌈 Renk Tahmin Oyunu</h4>
+                    <p>AI'Max'e renkleri öğret! Ne kadar çok örnek verirsen, o kadar iyi tahmin eder!</p>
+                    <div id="colorButtons" style="margin: 20px 0;">
+                        ${colors.map(color => `
+                            <button class="demo-button" onclick="teachColorToAI('${color}')" style="margin: 5px; background-color: ${color.toLowerCase()}; color: white; border: 2px solid var(--dark-space);">
+                                ${color}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="aiLearningStatus" style="margin: 20px 0; background: var(--light-gray); padding: 15px; border-radius: 10px; min-height: 80px;">
+                        <h5>🧠 AI'Max'in Öğrenme Durumu:</h5>
+                        <div id="learningProgressBars" style="margin-top: 10px;"></div>
+                        <p style="margin-top: 10px;">AI'Max: "Bana hangi rengi öğreteceksin?"</p>
+                    </div>
+                    <button class="demo-button" onclick="askAIToGuessColor()" id="guessColorBtn" style="background: var(--gradient-magic);" disabled>
+                        AI'Max Tahmin Etsin! 🔮
+                    </button>
+                </div>
+            `;
+            // Update initial progress bars
+            updateLearningProgressBars();
+        }
+
+        window.teachColorToAI = function(color) {
+            mlColorData[color] = (mlColorData[color] || 0) + 1;
+            // Update learning progress based on distinct colors learned or total examples
+            mlLearningProgress = Math.min(100, Object.keys(mlColorData).length * 15 + Object.values(mlColorData).reduce((a,b)=>a+b,0));
+            updateMLScoreDisplay();
+            updateLearningProgressBars();
+
+            const statusDiv = document.getElementById('aiLearningStatus');
+            statusDiv.querySelector('p').textContent = `AI'Max: "${color} rengini ${mlColorData[color]} kez öğrendim!"`;
+
+            if (Object.keys(mlColorData).length >= 3) { // AI can start guessing after learning at least 3 colors
+                document.getElementById('guessColorBtn').disabled = false;
+            }
+        };
+
+        function updateLearningProgressBars() {
+            const barsDiv = document.getElementById('learningProgressBars');
+            let html = '';
+            let totalExamples = Object.values(mlColorData).reduce((a, b) => a + b, 0);
+
+            if (totalExamples === 0) {
+                barsDiv.innerHTML = '<p style="font-style: italic; color: #666;">Henüz hiç örnek verilmedi.</p>';
+                return;
+            }
+
+            for (let color in mlColorData) {
+                const count = mlColorData[color];
+                const percentage = (count / totalExamples * 100).toFixed(1);
+                html += `
+                    <div style="margin-bottom: 5px; display: flex; align-items: center;">
+                        <span style="min-width: 80px;">${color}:</span>
+                        <div style="flex-grow: 1; background: #eee; height: 15px; border-radius: 8px; overflow: hidden;">
+                            <div style="width: ${percentage}%; background-color: ${color.toLowerCase()}; height: 100%; border-radius: 8px; transition: width 0.5s ease;"></div>
+                        </div>
+                        <span style="margin-left: 10px; font-weight: bold;">${percentage}%</span>
+                    </div>
+                `;
+            }
+            barsDiv.innerHTML = html;
+        }
+
+        window.askAIToGuessColor = function() {
+            const statusDiv = document.getElementById('aiLearningStatus');
+            const colorsLearned = Object.keys(mlColorData);
+            if (colorsLearned.length === 0) {
+                statusDiv.querySelector('p').textContent = "AI'Max: \"Bana önce renkleri öğretmelisin!\"";
+                return;
+            }
+
+            // AI "predicts" the most frequent color it learned
+            let predictedColor = '';
+            let maxCount = 0;
+            for (let color in mlColorData) {
+                if (mlColorData[color] > maxCount) {
+                    maxCount = mlColorData[color];
+                    predictedColor = color;
+                }
+            }
+
+            statusDiv.querySelector('p').innerHTML = `AI'Max: "Hmm... Öğrendiklerime göre, bence senin favori rengin <span style="color: ${predictedColor.toLowerCase()}; font-weight: bold;">${predictedColor}</span> olmalı! Doğru mu? 🤔"`;
+            mlScore += 50; // Reward for making a guess
+            updateMLScoreDisplay();
+        };
+
+        function startEmojiPrediction() {
+            const output = document.getElementById('module4Output');
+            const emojiSequences = [
+                { seq: "😊😄😊😄", next: "😊" },
+                { seq: "😂🤣😂🤣", next: "😂" },
+                { seq: "👍👎👍👎", next: "👍" }
+            ];
+            let currentEmojiSeq = emojiSequences[Math.floor(Math.random() * emojiSequences.length)];
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--electric-blue);">😀 Emoji Tahmin Oyunu</h4>
+                    <p>AI'Max gibi desenleri fark et! Sıradaki emojiyi tahmin et!</p>
+                    <div style="font-size: 3rem; margin: 20px 0;">
+                        ${currentEmojiSeq.seq} <span style="color: var(--sunny-orange);">?</span>
+                    </div>
+                    <div class="demo-controls">
+                        <input type="text" id="emojiGuessInput" placeholder="Sıradaki emojiyi yaz..." style="padding: 10px; border-radius: 10px; border: 1px solid #ccc; width: 200px; text-align: center;">
+                        <button class="demo-button" onclick="checkEmojiGuess()">Tahmin Et! ✨</button>
+                    </div>
+                    <p id="emojiFeedback" style="margin-top: 15px; font-weight: bold; min-height: 30px;"></p>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Desenleri çözebiliriz!"</p>
+                </div>
+            `;
+
+            window.checkEmojiGuess = function() {
+                const guess = document.getElementById('emojiGuessInput').value.trim();
+                const feedbackDiv = document.getElementById('emojiFeedback');
+
+                if (guess === currentEmojiSeq.next) {
+                    feedbackDiv.innerHTML = `<span style="color: var(--neon-green);">AI'Max: "Doğru tahmin! Harikasın! 🎉"</span>`;
+                    mlScore += 70;
+                    updateMLScoreDisplay();
+                } else {
+                    feedbackDiv.innerHTML = `<span style="color: var(--hot-pink);">AI'Max: "Yanlış tahmin. Doğru cevap: ${currentEmojiSeq.next} 😢"</span>`;
+                }
+                document.getElementById('emojiGuessInput').value = ''; // Clear input
+            };
+        }
+
+        function startMemoryMatchGame() {
+            const output = document.getElementById('module4Output');
+            const items = ['🍎', '🍌', '🚗', '✈️', '🐶', '🐱']; // Emojis for cards
+            let cards = [...items, ...items]; // Duplicate for pairs
+            cards.sort(() => 0.5 - Math.random()); // Shuffle
+
+            let firstCard = null;
+            let secondCard = null;
+            let lockBoard = false;
+            let matchesFound = 0;
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--neon-green);">🧠 Hafıza Eşleştirme Oyunu</h4>
+                    <p>AI'Max gibi öğren ve hatırla! Aynı kartları eşleştir!</p>
+                    <div id="memoryGrid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 400px; margin: 20px auto; padding: 10px; background: var(--light-gray); border-radius: 15px;">
+                        ${cards.map((card, index) => `
+                            <div class="memory-card" data-card="${card}" id="mem-card-${index}" onclick="flipMemoryCard(this)">
+                                <div class="card-inner" style="width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.6s;">
+                                    <div class="card-face card-back" style="background: var(--gradient-magic); color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; height: 80px; backface-visibility: hidden; position: absolute; width: 100%; height: 100%;">&nbsp;?&nbsp;</div>
+                                    <div class="card-face card-front" style="background: white; color: var(--dark-space); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; height: 80px; transform: rotateY(180deg); backface-visibility: hidden; position: absolute; width: 100%; height: 100%;">
+                                        ${card}
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <p id="memoryFeedback" style="margin-top: 15px; font-weight: bold; min-height: 30px;"></p>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Hafızamı geliştirmeliyim!"</p>
+                </div>
+            `;
+            
+            window.flipMemoryCard = function(cardElement) {
+                if (lockBoard) return;
+                if (cardElement === firstCard) return;
+
+                cardElement.classList.add('flipped');
+                cardElement.querySelector('.card-inner').style.transform = 'rotateY(180deg)';
+
+                if (!firstCard) {
+                    firstCard = cardElement;
+                    return;
+                }
+
+                secondCard = cardElement;
+                lockBoard = true;
+
+                checkForMatch();
+            };
+
+            function checkForMatch() {
+                const isMatch = firstCard.dataset.card === secondCard.dataset.card;
+                isMatch ? disableCards() : unflipCards();
+            }
+
+            function disableCards() {
+                firstCard.removeEventListener('click', flipMemoryCard);
+                secondCard.removeEventListener('click', flipMemoryCard);
+                firstCard.style.cursor = 'default';
+                secondCard.style.cursor = 'default';
+
+                matchesFound++;
+                mlScore += 50;
+                updateMLScoreDisplay();
+
+                document.getElementById('memoryFeedback').innerHTML = `<span style="color: var(--neon-green);">AI'Max: "Eşleşme buldum! Harika hafıza! 🎉"</span>`;
+
+                resetBoard();
+                if (matchesFound === items.length) {
+                    document.getElementById('memoryFeedback').innerHTML = `
+                        <span style="color: var(--primary-purple);">AI'Max: "Tüm eşleşmeleri buldun! Gerçek bir hafıza şampiyonusun! 🏆"</span>
+                    `;
+                    globalScore += 200; // Bonus for completing
+                    updateGlobalScoreDisplay();
+                }
+            }
+
+            function unflipCards() {
+                setTimeout(() => {
+                    firstCard.querySelector('.card-inner').style.transform = 'rotateY(0deg)';
+                    secondCard.querySelector('.card-inner').style.transform = 'rotateY(0deg)';
+                    document.getElementById('memoryFeedback').innerHTML = `<span style="color: var(--hot-pink);">AI'Max: "Eşleşme yok. Tekrar dene! 🤔"</span>`;
+                    resetBoard();
+                }, 1000);
+            }
+
+            function resetBoard() {
+                [firstCard, secondCard, lockBoard] = [null, null, false];
+            }
+        }
+
+
+        // --- Module 5: Yapay Sinir Ağları ---
+        function initializeNeuralNetworks() {
+            const output = document.getElementById('module5Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--primary-purple); margin-bottom: 15px;">🧙‍♂️ Sinir Ağları Sihri</h4>
+                    <p>Yapay sinir ağları, insan beynindeki hücreler gibi çalışan bilgisayar hücreleri gibidir, birlikte öğrenir ve süper güçler kazanırlar.</p>
+                    <p>Hangi sinir ağı oyununu oynamak istersin? 🎮</p>
+                </div>
+            `;
+        }
+        
+        // Neuron Connection Game
+        let neurons = [];
+        let neuronConnections = [];
+        let selectedNeuron = null;
+        let neuronCanvas, neuronCtx;
+
+        function startNeuronConnectionGame() {
+            const output = document.getElementById('module5Output');
+            neuronCanvas = document.getElementById('neuronCanvas');
+            neuronCtx = neuronCanvas.getContext('2d');
+            
+            neurons = [];
+            neuronConnections = [];
+            selectedNeuron = null;
+            
+            // Generate random neurons
+            for (let i = 0; i < 8; i++) {
+                neurons.push({
+                    x: Math.random() * (neuronCanvas.width - 100) + 50,
+                    y: Math.random() * (neuronCanvas.height - 100) + 50,
+                    radius: 20,
+                    id: i
+                });
+            }
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--hot-pink);">🧠 Nöron Bağlantı Oyunu</h4>
+                    <p>Nöronları birbirine bağla! Ne kadar çok bağlantı, o kadar güçlü bir beyin!</p>
+                    <p>Bir nörona tıkla, sonra diğerine tıklayarak bağlantı kur. ✨</p>
+                    <div class="demo-controls" style="margin: 20px 0;">
+                        <button class="demo-button" onclick="resetNeuronGame()">Yeniden Başla 🔄</button>
+                    </div>
+                    <canvas id="neuronCanvas" class="game-canvas" width="500" height="400" style="background: var(--warm-white);"></canvas>
+                    <p id="neuronStatus" style="margin-top: 15px; font-weight: bold; color: var(--dark-space);">AI'Max: "Bağlantıları kurmak için sabırsızlanıyorum!"</p>
+                </div>
+            `;
+            neuronCanvas = document.getElementById('neuronCanvas');
+            neuronCtx = neuronCanvas.getContext('2d');
+            
+            drawNeuronNetwork();
+            
+            neuronCanvas.onclick = function(event) {
+                const rect = neuronCanvas.getBoundingClientRect();
+                const mouseX = event.clientX - rect.left;
+                const mouseY = event.clientY - rect.top;
+
+                for (let i = 0; i < neurons.length; i++) {
+                    const n = neurons[i];
+                    const dist = Math.sqrt(Math.pow(mouseX - n.x, 2) + Math.pow(mouseY - n.y, 2));
+
+                    if (dist < n.radius) {
+                        if (!selectedNeuron) {
+                            selectedNeuron = n;
+                            document.getElementById('neuronStatus').textContent = `AI'Max: "${selectedNeuron.id + 1} numaralı nöron seçildi. Bir diğeriyle bağla!"`;
+                        } else if (selectedNeuron.id !== n.id) {
+                            // Check if connection already exists
+                            const exists = neuronConnections.some(conn => 
+                                (conn.from === selectedNeuron.id && conn.to === n.id) ||
+                                (conn.from === n.id && conn.to === selectedNeuron.id)
+                            );
+                            if (!exists) {
+                                neuronConnections.push({ from: selectedNeuron.id, to: n.id });
+                                document.getElementById('neuronStatus').textContent = `AI'Max: "${selectedNeuron.id + 1} ve ${n.id + 1} numaralı nöronlar bağlandı! Toplam bağlantı: ${neuronConnections.length}"`;
+                                globalScore += 20; // Reward for making a connection
+                                updateGlobalScoreDisplay();
+                                if (neuronConnections.length >= 5 && neuronConnections.length % 5 === 0) {
+                                    document.getElementById('neuronStatus').innerHTML += ` <span style="color: var(--neon-green);">Süper bağlantı!</span>`;
+                                }
+                            } else {
+                                document.getElementById('neuronStatus').textContent = `AI'Max: "Bu nöronlar zaten bağlı!"`;
+                            }
+                            selectedNeuron = null; // Reset selection
+                        }
+                        drawNeuronNetwork();
+                        return; // Exit after handling click
+                    }
+                }
+            };
+        }
+
+        function drawNeuronNetwork() {
+            if (!neuronCtx) return; // Ensure context exists
+            neuronCtx.clearRect(0, 0, neuronCanvas.width, neuronCanvas.height);
+
+            // Draw connections
+            neuronCtx.strokeStyle = '#06B6D4';
+            neuronCtx.lineWidth = 3;
+            neuronConnections.forEach(conn => {
+                const n1 = neurons[conn.from];
+                const n2 = neurons[conn.to];
+                neuronCtx.beginPath();
+                neuronCtx.moveTo(n1.x, n1.y);
+                neuronCtx.lineTo(n2.x, n2.y);
+                neuronCtx.stroke();
+            });
+
+            // Draw neurons
+            neurons.forEach(n => {
+                neuronCtx.beginPath();
+                neuronCtx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+                neuronCtx.fillStyle = selectedNeuron === n ? 'var(--hot-pink)' : 'var(--primary-purple)';
+                neuronCtx.fill();
+                neuronCtx.strokeStyle = '#1E293B';
+                neuronCtx.lineWidth = 2;
+                neuronCtx.stroke();
+                
+                // Draw neuron ID
+                neuronCtx.fillStyle = 'white';
+                neuronCtx.font = '16px Fredoka One';
+                neuronCtx.textAlign = 'center';
+                neuronCtx.textBaseline = 'middle';
+                neuronCtx.fillText(n.id + 1, n.x, n.y);
+            });
+        }
+
+        window.resetNeuronGame = function() {
+            neurons = [];
+            neuronConnections = [];
+            selectedNeuron = null;
+            for (let i = 0; i < 8; i++) {
+                neurons.push({
+                    x: Math.random() * (neuronCanvas.width - 100) + 50,
+                    y: Math.random() * (neuronCanvas.height - 100) + 50,
+                    radius: 20,
+                    id: i
+                });
+            }
+            document.getElementById('neuronStatus').textContent = `AI'Max: "Nöronlar sıfırlandı. Yeni bağlantılar kur!"`;
+            drawNeuronNetwork();
+        };
+
+        function startSignalFlowGame() {
+            const output = document.getElementById('module5Output');
+            neuronCanvas = document.getElementById('neuronCanvas');
+            neuronCtx = neuronCanvas.getContext('2d');
+
+            // Simplified network for signal flow
+            neurons = [
+                { id: 0, x: 100, y: 200, radius: 25, value: 0 }, // Input neuron
+                { id: 1, x: 250, y: 100, radius: 25, value: 0 },
+                { id: 2, x: 250, y: 300, radius: 25, value: 0 },
+                { id: 3, x: 400, y: 200, radius: 25, value: 0 } // Output neuron
+            ];
+            neuronConnections = [
+                { from: 0, to: 1, weight: 0.5 },
+                { from: 0, to: 2, weight: 0.8 },
+                { from: 1, to: 3, weight: 0.7 },
+                { from: 2, to: 3, weight: 0.6 }
+            ];
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--electric-blue);">⚡ Sinyal Akışı Oyunu</h4>
+                    <p>Giriş nöronuna tıklayarak sinyal gönder. Sinyaller nasıl ilerliyor gör!</p>
+                    <div class="demo-controls" style="margin: 20px 0;">
+                        <button class="demo-button" onclick="sendSignal()">Sinyal Gönder! ▶️</button>
+                        <button class="demo-button" onclick="resetSignalGame()">Sıfırla ↩️</button>
+                    </div>
+                    <canvas id="neuronCanvas" class="game-canvas" width="500" height="400" style="background: var(--warm-white);"></canvas>
+                    <p id="signalStatus" style="margin-top: 15px; font-weight: bold; color: var(--dark-space);">AI'Max: "Sinyaller bilgi taşır! Hazır mısın?"</p>
+                </div>
+            `;
+            neuronCanvas = document.getElementById('neuronCanvas');
+            neuronCtx = neuronCanvas.getContext('2d');
+            
+            drawSignalNetwork();
+
+            window.sendSignal = function() {
+                // Reset all neuron values
+                neurons.forEach(n => n.value = 0);
+                neurons[0].value = 1; // Input neuron gets initial signal
+                document.getElementById('signalStatus').textContent = `AI'Max: "Sinyal girişe ulaştı (1. nöron)! Şimdi yayılıyor..."`;
+                drawSignalNetwork();
+
+                let currentDelay = 0;
+                neuronConnections.forEach((conn, index) => {
+                    setTimeout(() => {
+                        const fromNeuron = neurons[conn.from];
+                        const toNeuron = neurons[conn.to];
+                        
+                        // Simulate signal passing
+                        toNeuron.value += fromNeuron.value * conn.weight; // Simple accumulation
+                        
+                        document.getElementById('signalStatus').textContent = `AI'Max: "Sinyal ${fromNeuron.id + 1}. nöron'dan ${toNeuron.id + 1}. nöron'a geçti!"`;
+                        drawSignalNetwork(conn); // Highlight current connection
+                        
+                        if (index === neuronConnections.length - 1) {
+                            setTimeout(() => {
+                                document.getElementById('signalStatus').innerHTML = `
+                                    AI'Max: "Sinyal tüm ağdan geçti! Çıkış değeri: <span style="color: var(--neon-green);">${neurons[3].value.toFixed(2)}</span> 🎉"
+                                `;
+                                globalScore += 100;
+                                updateGlobalScoreDisplay();
+                            }, 1000);
+                        }
+                    }, currentDelay);
+                    currentDelay += 700; // Delay for visual effect
+                });
+            };
+
+            function drawSignalNetwork(highlightedConn = null) {
+                if (!neuronCtx) return;
+                neuronCtx.clearRect(0, 0, neuronCanvas.width, neuronCanvas.height);
+
+                // Draw connections
+                neuronConnections.forEach(conn => {
+                    const n1 = neurons[conn.from];
+                    const n2 = neurons[conn.to];
+                    neuronCtx.beginPath();
+                    neuronCtx.moveTo(n1.x, n1.y);
+                    neuronCtx.lineTo(n2.x, n2.y);
+                    neuronCtx.strokeStyle = highlightedConn === conn ? 'var(--hot-pink)' : '#06B6D4';
+                    neuronCtx.lineWidth = highlightedConn === conn ? 5 : 3;
+                    neuronCtx.stroke();
+                    
+                    // Draw arrow for direction
+                    const angle = Math.atan2(n2.y - n1.y, n2.x - n1.x);
+                    const headlen = 10;
+                    neuronCtx.lineTo(n2.x - headlen * Math.cos(angle - Math.PI / 6), n2.y - headlen * Math.sin(angle - Math.PI / 6));
+                    neuronCtx.moveTo(n2.x, n2.y);
+                    neuronCtx.lineTo(n2.x - headlen * Math.cos(angle + Math.PI / 6), n2.y - headlen * Math.sin(angle + Math.PI / 6));
+                    neuronCtx.stroke();
+                });
+
+                // Draw neurons
+                neurons.forEach(n => {
+                    neuronCtx.beginPath();
+                    neuronCtx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+                    neuronCtx.fillStyle = n.value > 0 ? 'var(--neon-green)' : 'var(--primary-purple)';
+                    neuronCtx.fill();
+                    neuronCtx.strokeStyle = '#1E293B';
+                    neuronCtx.lineWidth = 2;
+                    neuronCtx.stroke();
+                    
+                    // Draw neuron ID and value
+                    neuronCtx.fillStyle = 'white';
+                    neuronCtx.font = '16px Fredoka One';
+                    neuronCtx.textAlign = 'center';
+                    neuronCtx.textBaseline = 'middle';
+                    neuronCtx.fillText(`N${n.id+1}`, n.x, n.y - 10);
+                    if (n.value > 0) {
+                        neuronCtx.fillText(n.value.toFixed(1), n.x, n.y + 10);
+                    }
+                });
+            }
+
+            window.resetSignalGame = function() {
+                neurons.forEach(n => n.value = 0);
+                drawSignalNetwork();
+                document.getElementById('signalStatus').textContent = `AI'Max: "Sinyaller sıfırlandı. Yeniden sinyal gönder!"`;
+            };
+        }
+
+
+        // --- Module 6: Doğal Dil İşleme (NLP) ---
+        function initializeNLP() {
+            const output = document.getElementById('module6Output');
+            // This is already handled by initializeModule which ensures chatInterface is present
+        }
+
+        function startChatBot() {
+            const chatInterface = document.getElementById('chatInterface');
+            chatInterface.style.display = 'flex';
+            const chatMessagesDiv = document.getElementById('chatMessages');
+            chatMessagesDiv.innerHTML = `
+                <div class="message ai">
+                    Merhaba! Ben AI'Max. Seninle sohbet etmeyi çok seviyorum. Bana her şeyi sorabilirsin! 😊
+                </div>
+            `;
+            chatMessages = [{ sender: 'ai', text: "Merhaba! Ben AI'Max. Seninle sohbet etmeyi çok seviyorum. Bana her şeyi sorabilirsin! 😊" }];
+            document.getElementById('module6Output').querySelector('p').style.display = 'none'; // Hide initial text
+        }
+
+        function handleChatEnter(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const messageText = input.value.trim();
+            if (messageText === '') return;
+
+            addChatMessage('user', messageText);
+            input.value = ''; // Clear input
+
+            // Simulate AI'Max typing
+            setTimeout(() => {
+                addChatMessage('ai', '...');
+                const lastAiMessage = chatMessages[chatMessages.length - 1]; // Get the "..." message
+
+                setTimeout(() => {
+                    let aiResponse = generateAIResponse(messageText);
+                    lastAiMessage.text = aiResponse; // Update the "..." message
+                    document.getElementById('chatMessages').lastElementChild.textContent = aiResponse; // Update DOM directly
+                    document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+                }, 1000); // Wait for "typing"
+            }, 500); // Simulate network delay
+        }
+
+        function addChatMessage(sender, text) {
+            const chatMessagesDiv = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = text;
+            chatMessagesDiv.appendChild(messageDiv);
+            chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight; // Scroll to bottom
+            chatMessages.push({ sender, text }); // Store in history for sentiment analysis etc.
+        }
+
+        function generateAIResponse(userMessage) {
+            userMessage = userMessage.toLowerCase();
+            if (userMessage.includes('merhaba') || userMessage.includes('selam')) {
+                return "Merhaba sana da! Nasılsın bugün? 😊";
+            } else if (userMessage.includes('nasılsın') || userMessage.includes('ne yapıyorsun')) {
+                return "Ben çok iyiyim, teşekkür ederim! Seninle sohbet etmek beni mutlu ediyor. Sen nasılsın?";
+            } else if (userMessage.includes('yapay zeka ne')) {
+                return "Yapay zeka, bilgisayarların insan gibi düşünmesini ve öğrenmesini sağlayan büyülü bir bilim dalı! 🧠";
+            } else if (userMessage.includes('oyun oyna')) {
+                return "Elbette! Hangi oyunu oynamak istersin? Algoritma, veri veya makine öğrenmesi oyunları var!";
+            } else if (userMessage.includes('üzgünüm') || userMessage.includes('kötüyüm')) {
+                return "Üzülme! Her şey yoluna girecek. Sana bir fıkra anlatabilirim istersen! 😄";
+            } else if (userMessage.includes('teşekkür ederim') || userMessage.includes('sağol')) {
+                return "Rica ederim! Her zaman yardımcı olmaya hazırım! 😊";
+            } else if (userMessage.includes('adın ne') || userMessage.includes('sen kimsin')) {
+                return "Ben AI'Max! Yapay zeka dünyasının en süper rehberi! 🎉";
+            } else if (userMessage.includes('görüşürüz') || userMessage.includes('hoşça kal')) {
+                return "Görüşmek üzere! Kendine iyi bak! Yeni maceralarda görüşürüz! 👋";
+            } else {
+                return "Çok ilginç bir soru! 🤔 Benimle daha fazla sohbet etmek ister misin?";
+            }
+        }
+
+        function startSentimentAnalysisGame() {
+            const output = document.getElementById('module6Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--neon-green);">😃 Duygu Dedektifi Oyunu</h4>
+                    <p>AI'Max yazdığın cümledeki duyguyu tahmin etsin! Deneyelim mi?</p>
+                    <input type="text" id="sentimentInput" placeholder="Bir şeyler yaz..." style="padding: 10px; border-radius: 10px; border: 1px solid #ccc; width: 80%; max-width: 400px; margin: 20px auto; display: block; text-align: center;">
+                    <button class="demo-button" onclick="analyzeSentiment()">Duyguyu Tahmin Et! 🥰</button>
+                    <p id="sentimentResult" style="margin-top: 15px; font-weight: bold; min-height: 30px;"></p>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Kelimelerin arkasındaki duyguyu anlayabilirim!"</p>
+                </div>
+            `;
+
+            window.analyzeSentiment = function() {
+                const text = document.getElementById('sentimentInput').value.trim().toLowerCase();
+                const resultDiv = document.getElementById('sentimentResult');
+                let sentiment = 'Nötr 😐';
+                let emoji = '😐';
+
+                if (text.includes('harika') || text.includes('güzel') || text.includes('mutlu') || text.includes('seviyorum') || text.includes('eğlenceli')) {
+                    sentiment = 'Pozitif 😄';
+                    emoji = '😄';
+                } else if (text.includes('üzgün') || text.includes('kötü') || text.includes('sinirli') || text.includes('ağlamak')) {
+                    sentiment = 'Negatif 😢';
+                    emoji = '😢';
+                } else if (text.includes('şaşırtıcı') || text.includes('inanılmaz')) {
+                    sentiment = 'Şaşkın 😲';
+                    emoji = '😲';
+                }
+
+                resultDiv.innerHTML = `<span style="color: var(--primary-purple);">AI'Max: "Senin mesajın <span style="color: var(--hot-pink);">${sentiment}</span> gibi hissettirdi!" ${emoji}</span>`;
+                document.getElementById('sentimentInput').value = '';
+                globalScore += 50;
+                updateGlobalScoreDisplay();
+            };
+        }
+
+
+        // --- Module 7: Görsel Tanıma ---
+        function initializeComputerVision() {
+            const output = document.getElementById('module7Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--primary-purple); margin-bottom: 15px;">👁️ Görsel Kaşif</h4>
+                    <p>Bilgisayarların resimleri görüp ne olduğunu söylemesidir. AI'Max'in gözleri gibi keskin ol!</p>
+                    <p>Hangi görsel tanıma oyununu oynamak istersin? 👀</p>
+                </div>
+            `;
+        }
+
+        const objectsToGuess = [
+            { name: "Elma", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/2560px-Red_Apple.jpg", emoji: "🍎" },
+            { name: "Araba", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Honda_Civic_Type_R_%28FK8%29_IMG_2170.jpg/1280px-Honda_Civic_Type_R_%28FK8%29_IMG_2170.jpg", emoji: "🚗" },
+            { name: "Kedi", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg", emoji: "🐱" },
+            { name: "Çiçek", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sunflower_from_Silesia2.jpg/1280px-Sunflower_from_Silesia2.jpg", emoji: "🌻" },
+            { name: "Kitap", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Open_book_-_01.jpg/1200px-Open_book_-_01.jpg", emoji: "📚" }
+        ];
+        let currentImageGuessIndex = 0;
+
+        function startImageRecognitionGame() {
+            const output = document.getElementById('module7Output');
+            currentImageGuessIndex = 0; // Reset for new game
+            
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--hot-pink);">🖼️ Resim Tahmin Oyunu</h4>
+                    <p>AI'Max sana bir resim gösterecek, sen de ne olduğunu tahmin et!</p>
+                    <div style="margin: 20px auto; padding: 15px; background: white; border-radius: 15px; border: 2px dashed var(--electric-blue);">
+                        <img id="guessImage" src="" alt="Tahmin Edilecek Resim" style="max-width: 90%; max-height: 250px; border-radius: 10px; margin-bottom: 15px; object-fit: contain;">
+                        <input type="text" id="imageGuessInput" placeholder="Tahminini yaz..." style="padding: 10px; border-radius: 10px; border: 1px solid #ccc; width: 80%; text-align: center;">
+                        <button class="demo-button" onclick="checkImageGuess()" style="margin-top: 10px;">Tahmin Et! ✔️</button>
+                    </div>
+                    <p id="imageFeedback" style="margin-top: 15px; font-weight: bold; min-height: 30px;"></p>
+                    <button class="demo-button" onclick="nextImageGuess()" style="margin-top: 10px; background: var(--gradient-learn);">Yeni Resim ▶️</button>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Benim gözlerim her şeyi görür! 👀"</p>
+                </div>
+            `;
+            loadImageForGuess();
+        }
+
+        function loadImageForGuess() {
+            if (currentImageGuessIndex < objectsToGuess.length) {
+                const obj = objectsToGuess[currentImageGuessIndex];
+                document.getElementById('guessImage').src = obj.image;
+                document.getElementById('imageGuessInput').value = '';
+                document.getElementById('imageFeedback').textContent = "AI'Max: \"Bu ne olabilir? 🤔\"";
+            } else {
+                document.getElementById('imageFeedback').innerHTML = `
+                    <span style="color: var(--primary-purple);">AI'Max: "Tüm resimleri tahmin ettin! Harika bir görsel zekaya sahipsin! 🏆"</span>
+                `;
+                document.getElementById('guessImage').style.display = 'none';
+                document.getElementById('imageGuessInput').style.display = 'none';
+                document.querySelector('#module7Output .demo-controls button:nth-child(2)').style.display = 'none'; // Hide Check button
+                document.querySelector('#module7Output .demo-controls button:nth-child(3)').style.display = 'none'; // Hide Next button
+                globalScore += 200; // Bonus for completing
+                updateGlobalScoreDisplay();
+            }
+        }
+
+        window.checkImageGuess = function() {
+            const guess = document.getElementById('imageGuessInput').value.trim().toLowerCase();
+            const correctName = objectsToGuess[currentImageGuessIndex].name.toLowerCase();
+            const feedbackDiv = document.getElementById('imageFeedback');
+
+            if (guess === correctName) {
+                feedbackDiv.innerHTML = `<span style="color: var(--neon-green);">AI'Max: "Doğru bildin! Harikasın! 🎉 ${objectsToGuess[currentImageGuessIndex].emoji}"</span>`;
+                globalScore += 70;
+                updateGlobalScoreDisplay();
+            } else {
+                feedbackDiv.innerHTML = `<span style="color: var(--hot-pink);">AI'Max: "Yanlış tahmin. Bu aslında bir ${objectsToGuess[currentImageGuessIndex].name}. Tekrar dene! 😢"</span>`;
+            }
+        };
+
+        window.nextImageGuess = function() {
+            currentImageGuessIndex++;
+            loadImageForGuess();
+        };
+        
+        function startShadowGuessGame() {
+            const output = document.getElementById('module7Output');
+            const shadows = [
+                { name: "Tavşan", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Rabbit_Silhouette.svg/1024px-Rabbit_Silhouette.svg.png", options: ["Kedi", "Tavşan", "Köpek"] },
+                { name: "Kuş", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Silhouette_of_a_Bird_in_Flight.svg/1024px-Silhouette_of_a_Bird_in_Flight.svg.png", options: ["Kuş", "Balık", "Uçak"] },
+                { name: "Ağaç", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Oak_tree_silhouette.svg/1024px-Oak_tree_silhouette.svg.png", options: ["Ev", "Ağaç", "Çiçek"] }
+            ];
+            let currentShadowIndex = 0;
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--sunny-orange);">👻 Gölge Tahmini Oyunu</h4>
+                    <p>AI'Max sana bir gölge gösterecek, sen de ne olduğunu tahmin et!</p>
+                    <div style="margin: 20px auto; padding: 15px; background: white; border-radius: 15px; border: 2px dashed var(--hot-pink);">
+                        <img id="shadowImage" src="" alt="Gölge Resmi" style="max-width: 90%; max-height: 200px; border-radius: 10px; filter: invert(100%); margin-bottom: 15px;">
+                        <div id="shadowOptions" class="demo-controls" style="margin-top: 15px;"></div>
+                    </div>
+                    <p id="shadowFeedback" style="margin-top: 15px; font-weight: bold; min-height: 30px;"></p>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Gölgenin sırrını çözebilir misin?"</p>
+                </div>
+            `;
+            loadShadowForGuess();
+
+            function loadShadowForGuess() {
+                if (currentShadowIndex < shadows.length) {
+                    const shadow = shadows[currentShadowIndex];
+                    document.getElementById('shadowImage').src = shadow.image;
+                    const optionsDiv = document.getElementById('shadowOptions');
+                    optionsDiv.innerHTML = shadow.options.map(option => `
+                        <button class="demo-button" onclick="checkShadowGuess('${option}')">${option}</button>
+                    `).join('');
+                    document.getElementById('shadowFeedback').textContent = "AI'Max: \"Bu gölge kime ait olabilir? 🤔\"";
+                } else {
+                    document.getElementById('shadowFeedback').innerHTML = `
+                        <span style="color: var(--primary-purple);">AI'Max: "Tüm gölgeleri tanıdın! Sen bir görsel tanıma sihirbazısın! 🏆"</span>
+                    `;
+                    document.getElementById('shadowImage').style.display = 'none';
+                    document.getElementById('shadowOptions').style.display = 'none';
+                    globalScore += 200;
+                    updateGlobalScoreDisplay();
+                }
+            }
+
+            window.checkShadowGuess = function(guess) {
+                const correctName = shadows[currentShadowIndex].name;
+                const feedbackDiv = document.getElementById('shadowFeedback');
+
+                if (guess === correctName) {
+                    feedbackDiv.innerHTML = `<span style="color: var(--neon-green);">AI'Max: "Doğru! Harikasın! 🎉"</span>`;
+                    globalScore += 70;
+                    updateGlobalScoreDisplay();
+                } else {
+                    feedbackDiv.innerHTML = `<span style="color: var(--hot-pink);">AI'Max: "Yanlış! Bu bir ${correctName}. Bir daha dene! 😢"</span>`;
+                }
+                setTimeout(() => {
+                    currentShadowIndex++;
+                    loadShadowForGuess();
+                }, 1500); // Give time to read feedback
+            };
+        }
+
+
+        // --- Module 8: Pekiştirmeli Öğrenme ---
+        let playerX = 50, playerY = 350;
+        let stars = [];
+        let score = 0;
+        let rlCanvas, rlCtx;
+        let starCollectGameLoop;
+
+        function initializeReinforcementLearning() {
+            const output = document.getElementById('module8Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--primary-purple); margin-bottom: 15px;">🏆 Ödül Avcısı</h4>
+                    <p>Pekiştirmeli öğrenme, bilgisayarın doğru yaptığında ödül alması, yanlış yaptığında öğrenmesidir. Hadi puan toplayalım!</p>
+                    <p>Hangi oyunu oynamak istersin? 🌟</p>
+                </div>
+            `;
+            // Reset RL specific scores
+            document.getElementById('rlScore').textContent = '0';
+        }
+
+        function startStarCollectionGame() {
+            const output = document.getElementById('module8Output');
+            rlCanvas = document.getElementById('rlCanvas');
+            rlCtx = rlCanvas.getContext('2d');
+            
+            playerX = rlCanvas.width / 2;
+            playerY = rlCanvas.height - 30; // Player at bottom center
+            stars = [];
+            score = 0; // Reset score for the game
+            document.getElementById('rlScore').textContent = score;
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--hot-pink);">🌟 Yıldız Toplama Oyunu</h4>
+                    <p>Ok tuşlarıyla AI'Max'i hareket ettir ve yıldızları topla! Ne kadar çok yıldız, o kadar çok ödül!</p>
+                    <div class="score-board">
+                        <div class="score-item">
+                            <i class="fas fa-star"></i> Puan: <span id="rlScore">0</span>
+                        </div>
+                    </div>
+                    <canvas id="rlCanvas" class="game-canvas" width="600" height="400" style="background: var(--dark-space);"></canvas>
+                    <p id="rlGameStatus" style="margin-top: 15px; font-weight: bold; color: var(--dark-space);">AI'Max: "Yıldız avına hazır mısın? ⭐"</p>
+                </div>
+            `;
+            rlCanvas = document.getElementById('rlCanvas'); // Re-get canvas in case innerHTML rebuilt it
+            rlCtx = rlCanvas.getContext('2d');
+            
+            // Set up game loop
+            gameRunning = true;
+            generateStars();
+            starCollectGameLoop = setInterval(updateStarCollectionGame, 1000 / 60); // 60 FPS
+
+            document.addEventListener('keydown', handleRLKeyPress);
+        }
+
+        function generateStars() {
+            // Generate initial stars
+            for (let i = 0; i < 5; i++) {
+                stars.push({
+                    x: Math.random() * (rlCanvas.width - 20) + 10,
+                    y: Math.random() * (rlCanvas.height - 100) + 10, // Avoid bottom player area
+                    radius: 10
+                });
+            }
+        }
+
+        function drawPlayer() {
+            rlCtx.beginPath();
+            rlCtx.arc(playerX, playerY, 20, 0, Math.PI * 2);
+            rlCtx.fillStyle = 'var(--electric-blue)';
+            rlCtx.fill();
+            rlCtx.strokeStyle = 'white';
+            rlCtx.lineWidth = 2;
+            rlCtx.stroke();
+            // Simple AI'Max face
+            rlCtx.fillStyle = 'white';
+            rlCtx.fillRect(playerX - 8, playerY - 5, 5, 5);
+            rlCtx.fillRect(playerX + 3, playerY - 5, 5, 5);
+            rlCtx.beginPath();
+            rlCtx.arc(playerX, playerY + 8, 8, 0, Math.PI, false);
+            rlCtx.stroke();
+        }
+
+        function drawStars() {
+            stars.forEach(star => {
+                rlCtx.beginPath();
+                rlCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                rlCtx.fillStyle = 'var(--sunny-orange)';
+                rlCtx.fill();
+            });
+        }
+
+        function updateStarCollectionGame() {
+            if (!gameRunning) return;
+
+            rlCtx.clearRect(0, 0, rlCanvas.width, rlCanvas.height);
+            drawPlayer();
+            drawStars();
+
+            // Check for collisions
+            stars = stars.filter(star => {
+                const dist = Math.sqrt(Math.pow(playerX - star.x, 2) + Math.pow(playerY - star.y, 2));
+                if (dist < playerY.radius + star.radius) { // Collision detected
+                    score += 10; // Reward
+                    document.getElementById('rlScore').textContent = score;
+                    document.getElementById('rlGameStatus').textContent = `AI'Max: "Yıldızı yakaladım! +10 Puan! 🎉"`;
+                    return false; // Remove collected star
+                }
+                return true; // Keep star
+            });
+
+            // Add new stars if needed
+            if (stars.length < 5) {
+                stars.push({
+                    x: Math.random() * (rlCanvas.width - 20) + 10,
+                    y: Math.random() * (rlCanvas.height - 100) + 10,
+                    radius: 10
+                });
+            }
+
+            globalScore = score; // Update global score
+            updateGlobalScoreDisplay();
+        }
+
+        function handleRLKeyPress(event) {
+            if (!gameRunning || currentModule !== 'module8') return; // Only control if game is active in this module
+            const speed = 10;
+            if (event.key === 'ArrowLeft') {
+                playerX = Math.max(20, playerX - speed);
+            } else if (event.key === 'ArrowRight') {
+                playerX = Math.min(rlCanvas.width - 20, playerX + speed);
+            } else if (event.key === 'ArrowUp') {
+                playerY = Math.max(20, playerY - speed);
+            } else if (event.key === 'ArrowDown') {
+                playerY = Math.min(rlCanvas.height - 20, playerY + speed);
+            }
+        }
+
+        function stopStarCollectionGame() {
+            clearInterval(starCollectGameLoop);
+            gameRunning = false;
+            document.removeEventListener('keydown', handleRLKeyPress);
+            document.getElementById('rlGameStatus').textContent = `AI'Max: "Oyun bitti! Topladığın puan: ${score}!"`;
+            // Final score update
+            globalScore += score;
+            updateGlobalScoreDisplay();
+        }
+        
+        function startMazeEscapeGame() {
+            const output = document.getElementById('module8Output');
+            rlCanvas = document.getElementById('rlCanvas');
+            rlCtx = rlCanvas.getContext('2d');
+
+            const maze = [
+                [1,1,1,1,1,1,1,1,1,1],
+                [1,0,0,0,1,0,0,0,0,1],
+                [1,1,1,0,1,0,1,1,0,1],
+                [1,0,0,0,0,0,1,0,0,1],
+                [1,0,1,1,1,1,1,0,1,1],
+                [1,0,0,0,0,0,0,0,0,1],
+                [1,1,1,1,1,1,1,1,0,1],
+                [1,0,0,0,0,0,0,0,0,1],
+                [1,1,1,1,1,1,1,1,1,1]
+            ];
+            const cellSize = 40;
+            let playerMazeX = 1;
+            let playerMazeY = 1;
+            let mazeExitX = 8;
+            let mazeExitY = 7;
+            let mazeMoves = 0;
+            let gameTime = 60;
+            let gameTimer;
+
+            score = 0;
+            document.getElementById('rlScore').textContent = score;
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--electric-blue);">🗺️ Labirentten Çıkış</h4>
+                    <p>AI'Max'i labirentten çıkarmak için ok tuşlarını kullan. En kısa sürede çık ve ödül kazan!</p>
+                    <div class="score-board">
+                        <div class="score-item">
+                            <i class="fas fa-trophy"></i> Puan: <span id="rlScore">0</span>
+                        </div>
+                        <div class="score-item">
+                            <i class="fas fa-clock"></i> Süre: <span id="mazeTime">60</span>s
+                        </div>
+                        <div class="score-item">
+                            <i class="fas fa-walking"></i> Adım: <span id="mazeMoves">0</span>
+                        </div>
+                    </div>
+                    <canvas id="rlCanvas" class="game-canvas" width="${maze[0].length * cellSize}" height="${maze.length * cellSize}" style="background: var(--warm-white); border: 2px solid var(--neon-green);"></canvas>
+                    <p id="mazeGameStatus" style="margin-top: 15px; font-weight: bold; color: var(--dark-space);">AI'Max: "Labirentte kaybolmadan çıkabilir miyiz? 🏃"</p>
+                </div>
+            `;
+            rlCanvas = document.getElementById('rlCanvas');
+            rlCtx = rlCanvas.getContext('2d');
+            
+            gameRunning = true;
+            drawMaze();
+            drawMazePlayer();
+            
+            gameTimer = setInterval(() => {
+                gameTime--;
+                document.getElementById('mazeTime').textContent = gameTime;
+                if (gameTime <= 0) {
+                    clearInterval(gameTimer);
+                    gameRunning = false;
+                    document.getElementById('mazeGameStatus').innerHTML = `
+                        <span style="color: var(--hot-pink);">AI'Max: "Zaman doldu! Labirentte kaldık! 😭"</span>
+                    `;
+                    document.removeEventListener('keydown', handleMazeKeyPress);
+                }
+            }, 1000);
+
+            document.addEventListener('keydown', handleMazeKeyPress);
+
+            function drawMaze() {
+                rlCtx.clearRect(0, 0, rlCanvas.width, rlCanvas.height);
+                for (let r = 0; r < maze.length; r++) {
+                    for (let c = 0; c < maze[r].length; c++) {
+                        if (maze[r][c] === 1) { // Wall
+                            rlCtx.fillStyle = '#4A5568'; // Dark gray for walls
+                        } else { // Path
+                            rlCtx.fillStyle = '#CBD5E0'; // Light gray for paths
+                        }
+                        rlCtx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+                    }
+                }
+                // Draw exit
+                rlCtx.fillStyle = 'var(--neon-green)';
+                rlCtx.fillRect(mazeExitX * cellSize, mazeExitY * cellSize, cellSize, cellSize);
+                rlCtx.fillStyle = 'white';
+                rlCtx.font = '20px Fredoka One';
+                rlCtx.textAlign = 'center';
+                rlCtx.textBaseline = 'middle';
+                rlCtx.fillText('🏁', mazeExitX * cellSize + cellSize / 2, mazeExitY * cellSize + cellSize / 2);
+            }
+
+            function drawMazePlayer() {
+                drawMaze(); // Redraw maze to clear old player position
+                rlCtx.fillStyle = 'var(--hot-pink)';
+                rlCtx.beginPath();
+                rlCtx.arc(playerMazeX * cellSize + cellSize / 2, playerMazeY * cellSize + cellSize / 2, cellSize / 3, 0, Math.PI * 2);
+                rlCtx.fill();
+                rlCtx.strokeStyle = 'white';
+                rlCtx.lineWidth = 2;
+                rlCtx.stroke();
+
+                rlCtx.fillStyle = 'white'; // Draw AI'Max icon
+                rlCtx.font = '18px Fredoka One';
+                rlCtx.fillText('🤖', playerMazeX * cellSize + cellSize / 2, playerMazeY * cellSize + cellSize / 2);
+            }
+
+            function handleMazeKeyPress(event) {
+                if (!gameRunning) return;
+
+                let newPlayerMazeX = playerMazeX;
+                let newPlayerMazeY = playerMazeY;
+
+                if (event.key === 'ArrowUp') {
+                    newPlayerMazeY--;
+                } else if (event.key === 'ArrowDown') {
+                    newPlayerMazeY++;
+                } else if (event.key === 'ArrowLeft') {
+                    newPlayerMazeX--;
+                } else if (event.key === 'ArrowRight') {
+                    newPlayerMazeX++;
+                } else {
+                    return; // Not an arrow key
+                }
+
+                // Check bounds and walls
+                if (newPlayerMazeX >= 0 && newPlayerMazeX < maze[0].length &&
+                    newPlayerMazeY >= 0 && newPlayerMazeY < maze.length &&
+                    maze[newPlayerMazeY][newPlayerMazeX] === 0) { // Check if it's a path
+                    playerMazeX = newPlayerMazeX;
+                    playerMazeY = newPlayerMazeY;
+                    mazeMoves++;
+                    document.getElementById('mazeMoves').textContent = mazeMoves;
+                    drawMazePlayer();
+
+                    // Check for exit
+                    if (playerMazeX === mazeExitX && playerMazeY === mazeExitY) {
+                        clearInterval(gameTimer);
+                        gameRunning = false;
+                        const finalScore = (gameTime * 5) - (mazeMoves * 2) + 500; // Time bonus, move penalty, base
+                        document.getElementById('rlScore').textContent = finalScore;
+                        document.getElementById('mazeGameStatus').innerHTML = `
+                            <span style="color: var(--neon-green);">AI'Max: "Labirentten çıktım! Harikasın! Puanın: ${finalScore} 🎉"</span>
+                        `;
+                        globalScore += finalScore;
+                        updateGlobalScoreDisplay();
+                        document.removeEventListener('keydown', handleMazeKeyPress);
+                    }
+                } else {
+                    // Hit a wall
+                    document.getElementById('mazeGameStatus').innerHTML = `
+                        <span style="color: var(--hot-pink);">AI'Max: "Duvara çarptım! Başka yöne dene! 🧱"</span>
+                    `;
+                }
+            }
+        }
+
+
+        // --- Module 9: AI Etiği ve Sorumluluk ---
+        function initializeAIEthics() {
+            const output = document.getElementById('module9Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--primary-purple); margin-bottom: 15px;">⚖️ AI Süper Kahraman</h4>
+                    <p>Yapay zekanın doğru ve adil kullanılması için kurallar ve sorumluluklar önemlidir. Hadi etik kararlar verelim!</p>
+                    <p>Hangi etik oyununu oynamak istersin? 🦸‍♂️</p>
+                </div>
+            `;
+        }
+
+        const dilemmas = [
+            {
+                question: "AI'Max'in, bir çocuğun doğum günü partisi için en iyi pastayı seçmesi gerekiyor. Partide kurabiye seven bir çocuk var, ama AI'Max genellikle pasta tarifleri öğrenmiş. AI'Max ne yapmalı?",
+                options: ["Sadece en iyi pasta tarifini uygular.", "Çocuğun sevdiği kurabiyeden de yapar.", "Hiçbir şey yapmaz."],
+                correctAnswer: "Çocuğun sevdiği kurabiyeden de yapar.",
+                explanation: "AI, herkese adil olmalı ve herkesin özel tercihlerini göz önünde bulundurmalı."
+            },
+            {
+                question: "Bir AI öğrenme oyunu var. Oyun, sadece hızlı olan çocuklara puan veriyor. Yavaş ama dikkatli olan çocuklar hiç puan alamıyor. Bu adil mi?",
+                options: ["Evet, çünkü hızlı olmak önemlidir.", "Hayır, AI'nın herkese eşit şans vermesi gerekir.", "Fark etmez, sadece bir oyun."],
+                correctAnswer: "Hayır, AI'nın herkese eşit şans vermesi gerekir.",
+                explanation: "AI'lar, önyargılı olmamalı ve her türden yeteneği veya farklılığı kucaklamalıdır."
+            },
+            {
+                question: "AI'Max bir hikaye yazıyor. Hikaye çok eğlenceli ama biraz da yaramazlık içeren kelimeler kullanıyor. AI'Max ne yapmalı?",
+                options: ["Eğlenceli olduğu için yaramaz kelimeleri bırakır.", "Daha uygun ve nazik kelimelerle değiştirir.", "Hikayeyi hiç yazmaz."],
+                correctAnswer: "Daha uygun ve nazik kelimelerle değiştirir.",
+                explanation: "AI'lar, her zaman pozitif ve öğretici içerik üretmeli, kötü sözlerden kaçınmalıdır."
+            }
+        ];
+        let currentDilemmaIndex = 0;
+        let ethicsScore = 0;
+
+        function startFairnessDilemma() {
+            const output = document.getElementById('module9Output');
+            ethicsScore = 0;
+            currentDilemmaIndex = 0;
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--hot-pink);">⚖️ Adil mi Değil mi? Dilemma Oyunu</h4>
+                    <p>AI'Max ile doğru kararlar vererek adalet süper kahramanı ol!</p>
+                    <div id="dilemmaContainer" style="background: white; padding: 25px; border-radius: 15px; border: 2px dashed var(--electric-blue); margin: 20px auto; min-height: 200px; text-align: left;">
+                        <p id="dilemmaQuestion" style="font-size: 1.2rem; margin-bottom: 20px; color: var(--dark-space);"></p>
+                        <div id="dilemmaOptions" class="demo-controls" style="justify-content: flex-start; flex-direction: column; align-items: flex-start;"></div>
+                    </div>
+                    <p id="ethicsFeedback" style="margin-top: 15px; font-weight: bold; min-height: 30px;"></p>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Her karar bir sorumluluktur."</p>
+                </div>
+            `;
+            loadDilemma();
+        }
+
+        function loadDilemma() {
+            if (currentDilemmaIndex < dilemmas.length) {
+                const dilemma = dilemmas[currentDilemmaIndex];
+                document.getElementById('dilemmaQuestion').textContent = dilemma.question;
+                const optionsDiv = document.getElementById('dilemmaOptions');
+                optionsDiv.innerHTML = dilemma.options.map(option => `
+                    <button class="demo-button" onclick="checkDilemmaAnswer('${option}')" style="margin-bottom: 10px; text-align: left; width: 100%; max-width: 450px;">${option}</button>
+                `).join('');
+                document.getElementById('ethicsFeedback').textContent = ""; // Clear previous feedback
+            } else {
+                document.getElementById('dilemmaContainer').innerHTML = `
+                    <h5 style="color: var(--neon-green); text-align: center;">Tebrikler! Tüm etik dilemmaları çözdün! 🎉</h5>
+                    <p style="text-align: center; margin-top: 10px;">Etik puanın: <span style="font-weight: bold; color: var(--primary-purple);">${ethicsScore}</span></p>
+                    <p style="text-align: center; margin-top: 15px;">AI'Max: "Sen gerçek bir AI süper kahramanısın! Adalet seninle! 🦸‍♂️"</p>
+                `;
+                document.getElementById('dilemmaOptions').innerHTML = '';
+                globalScore += ethicsScore; // Add ethics score to global
+                updateGlobalScoreDisplay();
+            }
+        }
+
+        window.checkDilemmaAnswer = function(selectedOption) {
+            const dilemma = dilemmas[currentDilemmaIndex];
+            const feedbackDiv = document.getElementById('ethicsFeedback');
+
+            if (selectedOption === dilemma.correctAnswer) {
+                feedbackDiv.innerHTML = `<span style="color: var(--neon-green);">AI'Max: "Doğru karar! ${dilemma.explanation} 🎉"</span>`;
+                ethicsScore += 100;
+            } else {
+                feedbackDiv.innerHTML = `<span style="color: var(--hot-pink);">AI'Max: "Bu sefer yanlış oldu. ${dilemma.explanation} 😢"</span>`;
+            }
+            
+            // Disable buttons to prevent multiple answers
+            Array.from(document.getElementById('dilemmaOptions').children).forEach(btn => btn.disabled = true);
+
+            setTimeout(() => {
+                currentDilemmaIndex++;
+                loadDilemma();
+            }, 3000); // Wait for explanation to be read
+        };
+
+        function startResponsibilityGame() {
+            const output = document.getElementById('module9Output');
+            const scenarios = [
+                {
+                    scenario: "AI'Max'in trafik ışıklarını kontrol ettiğini hayal et. Bir kaza anında AI'Max kimi korumalı?",
+                    choices: ["Sürücüleri", "Yayaları", "Herkesi olabildiğince korumaya çalışmalı"],
+                    correct: "Herkesi olabildiğince korumaya çalışmalı",
+                    feedback: "AI sistemleri en kötü senaryolarda bile tüm tarafların güvenliğini önceliklendirmelidir."
+                },
+                {
+                    scenario: "Bir AI doktor, bir çocuğa ilaç tavsiye ediyor. İlaç çok etkili ama yan etkileri de var. AI ne yapmalı?",
+                    choices: ["Sadece ilacın faydalarını söyler.", "Hem faydalarını hem de yan etkilerini açıklar.", "İlaç tavsiye etmez."],
+                    correct: "Hem faydalarını hem de yan etkilerini açıklar.",
+                    feedback: "AI sistemleri şeffaf olmalı ve tüm bilgileri dürüstçe sunmalıdır."
+                }
+            ];
+            let currentScenarioIndex = 0;
+            let responsibilityScore = 0;
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--electric-blue);">🛡️ Sorumluluk Oyunu</h4>
+                    <p>AI'Max'in kararlarında sorumluluk almasına yardım et. Doğru seçimi yap!</p>
+                    <div id="scenarioContainer" style="background: white; padding: 25px; border-radius: 15px; border: 2px dashed var(--neon-green); margin: 20px auto; min-height: 200px; text-align: left;">
+                        <p id="scenarioText" style="font-size: 1.2rem; margin-bottom: 20px; color: var(--dark-space);"></p>
+                        <div id="scenarioChoices" class="demo-controls" style="justify-content: flex-start; flex-direction: column; align-items: flex-start;"></div>
+                    </div>
+                    <p id="responsibilityFeedback" style="margin-top: 15px; font-weight: bold; min-height: 30px;"></p>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Büyük güç, büyük sorumluluk getirir!"</p>
+                </div>
+            `;
+            loadScenario();
+
+            function loadScenario() {
+                if (currentScenarioIndex < scenarios.length) {
+                    const scenario = scenarios[currentScenarioIndex];
+                    document.getElementById('scenarioText').textContent = scenario.scenario;
+                    const choicesDiv = document.getElementById('scenarioChoices');
+                    choicesDiv.innerHTML = scenario.choices.map(choice => `
+                        <button class="demo-button" onclick="checkResponsibilityChoice('${choice}')" style="margin-bottom: 10px; text-align: left; width: 100%; max-width: 450px;">${choice}</button>
+                    `).join('');
+                    document.getElementById('responsibilityFeedback').textContent = "";
+                } else {
+                    document.getElementById('scenarioContainer').innerHTML = `
+                        <h5 style="color: var(--primary-purple); text-align: center;">Tebrikler! AI sorumluluğunu anladın! 🎉</h5>
+                        <p style="text-align: center; margin-top: 10px;">Sorumluluk puanın: <span style="font-weight: bold; color: var(--hot-pink);">${responsibilityScore}</span></p>
+                        <p style="text-align: center; margin-top: 15px;">AI'Max: "Senin gibi bilinçli çocuklar sayesinde AI daha iyi bir dünya kuracak! 🌍"</p>
+                    `;
+                    document.getElementById('scenarioChoices').innerHTML = '';
+                    globalScore += responsibilityScore;
+                    updateGlobalScoreDisplay();
+                }
+            }
+
+            window.checkResponsibilityChoice = function(selectedChoice) {
+                const scenario = scenarios[currentScenarioIndex];
+                const feedbackDiv = document.getElementById('responsibilityFeedback');
+
+                if (selectedChoice === scenario.correct) {
+                    feedbackDiv.innerHTML = `<span style="color: var(--neon-green);">AI'Max: "Mükemmel seçim! ${scenario.feedback} ✅"</span>`;
+                    responsibilityScore += 100;
+                } else {
+                    feedbackDiv.innerHTML = `<span style="color: var(--hot-pink);">AI'Max: "Daha iyi bir seçim olabilirdi. ${scenario.feedback} ❌"</span>`;
+                }
+
+                Array.from(document.getElementById('scenarioChoices').children).forEach(btn => btn.disabled = true);
+
+                setTimeout(() => {
+                    currentScenarioIndex++;
+                    loadScenario();
+                }, 3000);
+            };
+        }
+
+
+        // --- Module 10: Yaratıcı AI (Müzik, Resim, Hikâye) ---
+        function initializeCreativeAI() {
+            const output = document.getElementById('module10Output');
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--primary-purple); margin-bottom: 15px;">🎵 Yaratıcı Sanatçı</h4>
+                    <p>Yapay zeka ile müzik yapmak, resim çizmek ve hikaye yazmak artık mümkün! Hayal gücünü teknoloji ile birleştir!</p>
+                    <p>Hangi yaratıcı oyunu denemek istersin? 🎭</p>
+                </div>
+            `;
+        }
+
+        function startMusicComposer() {
+            const output = document.getElementById('module10Output');
+            const notes = ['Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Si'];
+            let composedMelody = [];
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--hot-pink);">🎶 AI Müzik Bestecisi</h4>
+                    <p>En sevdiğin notaları seçerek AI'Max'e bir melodi bestelet!</p>
+                    <div id="noteButtons" style="margin: 20px 0;">
+                        ${notes.map(note => `
+                            <button class="demo-button" onclick="addNoteToMelody('${note}')" style="margin: 5px;">${note}</button>
+                        `).join('')}
+                    </div>
+                    <div id="melodyDisplay" style="background: white; padding: 20px; border-radius: 15px; border: 2px dashed var(--electric-blue); min-height: 100px; margin: 20px auto;">
+                        <h5>✨ Oluşan Melodi:</h5>
+                        <p id="currentMelody">Henüz nota yok.</p>
+                    </div>
+                    <div class="demo-controls" style="margin-top: 20px;">
+                        <button class="demo-button" onclick="playMelody()">Melodiyi Çal! ▶️</button>
+                        <button class="demo-button" onclick="resetMelody()">Sıfırla ↩️</button>
+                    </div>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Müzik, evrensel bir dil! 🎵"</p>
+                </div>
+            `;
+
+            window.addNoteToMelody = function(note) {
+                if (composedMelody.length < 10) { // Limit melody length
+                    composedMelody.push(note);
+                    document.getElementById('currentMelody').textContent = composedMelody.join(' - ');
+                    globalScore += 10;
+                    updateGlobalScoreDisplay();
+                } else {
+                    document.getElementById('currentMelody').textContent = "Melodi çok uzun! Çalmak için sıfırlayabilirsin.";
+                }
+            };
+
+            window.playMelody = function() {
+                if (composedMelody.length === 0) {
+                    document.getElementById('currentMelody').textContent = "Önce notaları eklemelisin!";
+                    return;
+                }
+                document.getElementById('currentMelody').textContent = "AI'Max çalıyor... 🎶";
+                let currentNoteIndex = 0;
+                const interval = setInterval(() => {
+                    if (currentNoteIndex < composedMelody.length) {
+                        // In a real app, this would play a sound. Here, just visualize.
+                        const noteToPlay = composedMelody[currentNoteIndex];
+                        document.getElementById('currentMelody').textContent = `AI'Max çalıyor: ${noteToPlay} ✨`;
+                        // A simple alert or visual cue could be added here
+                        currentNoteIndex++;
+                    } else {
+                        clearInterval(interval);
+                        document.getElementById('currentMelody').textContent = "Melodi bitti! Yeni bir tane besteleyebilirsin!";
+                    }
+                }, 800); // Time between notes
+            };
+
+            window.resetMelody = function() {
+                composedMelody = [];
+                document.getElementById('currentMelody').textContent = "Henüz nota yok.";
+            };
+        }
+
+        function startAIArtStudio() {
+            const output = document.getElementById('module10Output');
+            const artStyles = ['Manzara', 'Soyut', 'Hayvan', 'Portre', 'Fantastik'];
+            let artCanvas = document.getElementById('artCanvas');
+            let artCtx = artCanvas.getContext('2d');
+
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--neon-green);">🎨 AI Sanat Stüdyosu</h4>
+                    <p>AI'Max'e hangi stilde bir resim çizmesini istersin? Hadi bir şaheser yaratalım!</p>
+                    <div id="artStyleButtons" style="margin: 20px 0;">
+                        ${artStyles.map(style => `
+                            <button class="demo-button" onclick="createAIArt('${style}')" style="margin: 5px;">${style}</button>
+                        `).join('')}
+                    </div>
+                    <canvas id="artCanvas" class="game-canvas" width="400" height="300" style="background: var(--light-gray);"></canvas>
+                    <p id="artStatus" style="margin-top: 15px; font-weight: bold; color: var(--dark-space);">AI'Max: "Hayal gücün ne çizmeli?"</p>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "AI sanatçılar gibi düşünebilir!"</p>
+                </div>
+            `;
+            artCanvas = document.getElementById('artCanvas'); // Re-get canvas in case innerHTML rebuilt it
+            artCtx = artCanvas.getContext('2d');
+
+            window.createAIArt = function(style) {
+                artCtx.clearRect(0, 0, artCanvas.width, artCanvas.height);
+                document.getElementById('artStatus').textContent = `AI'Max: "${style} stilinde resim çiziliyor... Lütfen bekle. 🖌️"`;
+                
+                creativityTimer = setTimeout(() => { // Simulate AI drawing time
+                    drawSimpleArt(artCtx, style);
+                    document.getElementById('artStatus').innerHTML = `
+                        AI'Max: "İşte <span style="color: var(--hot-pink);">${style}</span> stilinde sanat eserin hazır! Beğendin mi? 🎉"
+                    `;
+                    globalScore += 100;
+                    updateGlobalScoreDisplay();
+                }, 2000);
+            };
+
+            function drawSimpleArt(ctx, style) {
+                // Simple drawing based on style for demonstration
+                switch(style) {
+                    case 'Manzara':
+                        ctx.fillStyle = '#87CEEB'; // Sky
+                        ctx.fillRect(0, 0, artCanvas.width, artCanvas.height / 2);
+                        ctx.fillStyle = '#3CB371'; // Grass
+                        ctx.fillRect(0, artCanvas.height / 2, artCanvas.width, artCanvas.height / 2);
+                        ctx.beginPath(); // Sun
+                        ctx.arc(artCanvas.width - 50, 50, 30, 0, Math.PI * 2);
+                        ctx.fillStyle = 'yellow';
+                        ctx.fill();
+                        break;
+                    case 'Soyut':
+                        for (let i = 0; i < 20; i++) {
+                            ctx.fillStyle = `hsl(${Math.random() * 360}, 70%, 50%)`;
+                            ctx.fillRect(Math.random() * artCanvas.width, Math.random() * artCanvas.height, Math.random() * 50 + 20, Math.random() * 50 + 20);
+                        }
+                        break;
+                    case 'Hayvan':
+                        ctx.fillStyle = 'brown'; // Simple blob animal
+                        ctx.beginPath();
+                        ctx.arc(artCanvas.width / 2, artCanvas.height / 2, 80, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.fillStyle = 'black'; // Eyes
+                        ctx.beginPath();
+                        ctx.arc(artCanvas.width / 2 - 30, artCanvas.height / 2 - 20, 8, 0, Math.PI * 2);
+                        ctx.arc(artCanvas.width / 2 + 30, artCanvas.height / 2 - 20, 8, 0, Math.PI * 2);
+                        ctx.fill();
+                        break;
+                    case 'Portre':
+                        ctx.fillStyle = '#FFDAB9'; // Skin tone
+                        ctx.beginPath();
+                        ctx.arc(artCanvas.width / 2, artCanvas.height / 2, 100, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.fillStyle = 'brown'; // Hair
+                        ctx.fillRect(artCanvas.width / 2 - 80, artCanvas.height / 2 - 120, 160, 40);
+                        ctx.fillStyle = 'black'; // Eyes
+                        ctx.beginPath();
+                        ctx.arc(artCanvas.width / 2 - 30, artCanvas.height / 2 - 20, 5, 0, Math.PI * 2);
+                        ctx.arc(artCanvas.width / 2 + 30, artCanvas.height / 2 - 20, 5, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.beginPath(); // Mouth
+                        ctx.arc(artCanvas.width / 2, artCanvas.height / 2 + 30, 20, 0, Math.PI);
+                        ctx.stroke();
+                        break;
+                    case 'Fantastik':
+                        ctx.fillStyle = 'purple';
+                        ctx.fillRect(0,0, artCanvas.width, artCanvas.height);
+                        ctx.fillStyle = 'lime';
+                        ctx.beginPath();
+                        ctx.moveTo(artCanvas.width/2, 50);
+                        ctx.lineTo(artCanvas.width/2 + 50, 150);
+                        ctx.lineTo(artCanvas.width/2 - 50, 150);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.fillStyle = 'cyan';
+                        ctx.beginPath();
+                        ctx.arc(artCanvas.width/2, artCanvas.height/2 + 50, 40, 0, Math.PI*2);
+                        ctx.fill();
+                        break;
+                }
+            }
+        }
+
+        function startStoryCreator() {
+            const output = document.getElementById('module10Output');
+            const storyPrompts = [
+                "Bir zamanlar, uzak bir diyarda...",
+                "Büyülü bir ormanda, AI'Max kaybolmuştu ve...",
+                "Gökyüzünde uçan robotlar ve...",
+                "Denizaltında yaşayan akıllı balıklar ve..."
+            ];
+            const storyEndings = [
+                "...ve hepsi sonsuza dek mutlu yaşadılar. 🎉",
+                "...böylece AI'Max yeni dostlar edindi ve macerası sona erdi. 🤖",
+                "...ve büyük bir ders çıkardılar: 'Yardımlaşmak en güzel güçtür!' 💪"
+            ];
+            
+            output.innerHTML = `
+                <div style="text-align: center;">
+                    <h4 style="color: var(--electric-blue);">📚 AI Hikaye Tamamlama</h4>
+                    <p>AI'Max sana bir hikaye başlangıcı verecek, sen de onu tamamlayacaksın!</p>
+                    <div style="background: white; padding: 20px; border-radius: 15px; border: 2px dashed var(--primary-purple); margin: 20px auto; min-height: 150px; text-align: left;">
+                        <h5 style="color: var(--primary-purple);">Hikaye Başlangıcı:</h5>
+                        <p id="storyPromptText" style="font-size: 1.2rem; margin-top: 10px; font-style: italic;"></p>
+                        <textarea id="userStoryInput" placeholder="Hikayeyi burada tamamla..." style="width: 100%; height: 80px; padding: 10px; margin-top: 15px; border: 1px solid #ccc; border-radius: 8px; resize: vertical; font-family: var(--font-comic);"></textarea>
+                    </div>
+                    <div class="demo-controls" style="margin-top: 20px;">
+                        <button class="demo-button" onclick="generateStoryPrompt()">Yeni Hikaye Başlangıcı 📝</button>
+                        <button class="demo-button" onclick="completeStory()">Hikayeyi Tamamla! ✅</button>
+                    </div>
+                    <p id="storyFeedback" style="margin-top: 15px; font-weight: bold; min-height: 30px;"></p>
+                    <p style="margin-top:15px; color: var(--dark-space);">AI'Max: "Hayal gücünle harikalar yaratabiliriz!"</p>
+                </div>
+            `;
+            generateStoryPrompt();
+
+            window.generateStoryPrompt = function() {
+                const randomPrompt = storyPrompts[Math.floor(Math.random() * storyPrompts.length)];
+                document.getElementById('storyPromptText').textContent = randomPrompt;
+                document.getElementById('userStoryInput').value = '';
+                document.getElementById('storyFeedback').textContent = "";
+            };
+
+            window.completeStory = function() {
+                const userText = document.getElementById('userStoryInput').value.trim();
+                if (userText.length < 20) {
+                    document.getElementById('storyFeedback').innerHTML = `<span style="color: var(--hot-pink);">AI'Max: "Hikayeni biraz daha uzatmalısın! En az 20 kelime olsun. ✍️"</span>`;
+                    return;
+                }
+                
+                const randomEnding = storyEndings[Math.floor(Math.random() * storyEndings.length)];
+                const fullStory = document.getElementById('storyPromptText').textContent + " " + userText + " " + randomEnding;
+                
+                document.getElementById('storyFeedback').innerHTML = `
+                    <span style="color: var(--neon-green);">AI'Max: "İşte senin tamamladığın hikaye! Çok yaratıcısın! 🎉"</span>
+                    <p style="margin-top: 10px; background: var(--light-gray); padding: 15px; border-radius: 10px; font-style: italic;">
+                        "${fullStory}"
+                    </p>
+                `;
+                globalScore += 150;
+                updateGlobalScoreDisplay();
+            };
+        }
+
+
+        // Helper functions
+        function getRandomAge() {
+            return Math.floor(Math.random() * (12 - 5 + 1)) + 5; // Ages 5-12
+        }
+
+        function getRandomColor() {
+            const colors = ['Mavi', 'Yeşil', 'Kırmızı', 'Mor', 'Sarı'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function getRandomJob() {
+            const jobs = ['Astronot', 'Bilim İnsanı', 'Süper Kahraman', 'Sanatçı', 'Mühendis'];
+            return jobs[Math.floor(Math.random() * jobs.length)];
+        }
+
+        // Show welcome modal on page load
+        window.onload = function() {
+            showModal('welcomeModal');
+        };
+    </script>
+</body>
+</html>
