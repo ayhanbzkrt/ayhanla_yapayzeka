@@ -31,6 +31,10 @@
 - **Pyodide** (Python demonstrasyonları için)  
 - **Modal & Animasyonlar** (CSS Keyframes)
 
+---
+
+Ayhan Bozkurt tarafından oluşturulmuştur: https://www.linkedin.com/in/ayhanbozkurt/
+
 ## Kurulum
 
 1. Bu repoyu klonlayın:  
